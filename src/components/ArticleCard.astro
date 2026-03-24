@@ -1,0 +1,73 @@
+---
+interface ProjectArticle {
+	title: string;
+	description: string;
+	category: string;
+	image: string;
+	pubDate: Date;
+	isFeatured?: boolean;
+    slug?: string;
+}
+
+interface Props {
+	article: ProjectArticle;
+	size?: 'large' | 'small' | 'list';
+}
+
+const { article, size = 'small' } = Astro.props;
+---
+
+{size === 'large' ? (
+	<article class="flex flex-col gap-6 mb-12 group cursor-pointer">
+		<div class="overflow-hidden aspect-[16/9] shadow-lg border border-ee-brown-dark/10">
+			<img 
+				src={article.image} 
+				alt={article.title} 
+				class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+			/>
+		</div>
+		<div class="flex flex-col gap-3">
+			<span class="font-dm-serif-display text-[14px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+			<h3 class="font-playfair text-4xl text-ee-brown-dark leading-tight group-hover:text-ee-terracotta transition-colors">
+				{article.title}
+			</h3>
+			<p class="font-dm-serif text-ee-subhead text-ee-cyan-muted italic">
+				{article.description}
+			</p>
+			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+		</div>
+	</article>
+) : size === 'small' ? (
+	<article class="flex flex-col gap-4 group cursor-pointer mb-8">
+		<div class="overflow-hidden aspect-[4/3] shadow-md border border-ee-brown-dark/10">
+			<img 
+				src={article.image} 
+				alt={article.title} 
+				class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+			/>
+		</div>
+		<div class="flex flex-col gap-2">
+			<span class="font-dm-serif-display text-[12px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+			<h3 class="font-playfair text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
+				{article.title}
+			</h3>
+			<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+		</div>
+	</article>
+) : (
+	<article class="py-4 border-b border-ee-brown-dark/10 group cursor-pointer">
+		<div class="flex gap-4 items-center">
+			<div class="flex-grow">
+				<span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+				<h3 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">
+					{article.title}
+				</h3>
+			</div>
+			{article.image && (
+				<div class="w-16 h-16 shrink-0 overflow-hidden">
+					<img src={article.image} class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0" />
+				</div>
+			)}
+		</div>
+	</article>
+)}

@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('news');
+  return newsEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} | EE Estilo Editorial`}>
+	<article class="max-w-4xl mx-auto py-12 px-4 shadow-sm bg-white mt-12 mb-24 border-t-8 border-ee-green-muted">
+		<header class="mb-12 text-center border-b pb-12 border-ee-brown-dark/10">
+			<span class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">{entry.data.category}</span>
+			<h1 class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm">{entry.data.title}</h1>
+			<p class="font-dm-serif text-ee-subhead text-ee-cyan-muted italic max-w-2xl mx-auto mb-8 font-light">
+				{entry.data.description}
+			</p>
+			<div class="flex items-center justify-center gap-6 font-poppins text-xs uppercase tracking-widest opacity-60">
+				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span></span>
+				<span class="w-1 h-1 bg-ee-brown-dark rounded-full"></span>
+				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+			</div>
+		</header>
+
+		<div class="mb-16 aspect-[21/9] overflow-hidden rounded-sm shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
+			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+		</div>
+
+		<div class="prose prose-lg prose-stone max-w-none font-poppins text-ee-body leading-[1.8] text-ee-gray-dark first-letter:text-6xl first-letter:font-playfair first-letter:float-left first-letter:mr-4 first-letter:mt-2 first-letter:text-ee-terracotta">
+			<Content />
+		</div>
+
+		<footer class="mt-20 pt-12 border-t-4 border-ee-brown-dark flex flex-col md:flex-row justify-between items-center gap-8">
+			<div class="flex gap-4">
+				<a href="#" class="bg-ee-green-muted text-white p-2 hover:bg-ee-brown-dark transition-colors">FB</a>
+				<a href="#" class="bg-ee-green-muted text-white p-2 hover:bg-ee-brown-dark transition-colors">TW</a>
+				<a href="#" class="bg-ee-green-muted text-white p-2 hover:bg-ee-brown-dark transition-colors">WA</a>
+			</div>
+			<a href="/" class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta">← Volver al Periódico</a>
+		</footer>
+	</article>
+</Layout>
+
+<style is:global>
+	.prose p {
+		margin-bottom: 2rem;
+	}
+	.prose h2 {
+		font-family: 'DM Serif Display', serif;
+		font-size: 2.25rem;
+		margin-top: 3rem;
+		margin-bottom: 1.5rem;
+		color: #232019;
+		border-left: 4px solid #80956d;
+		padding-left: 1.5rem;
+	}
+</style>

@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import MagazineCover from '../components/MagazineCover.astro';
+import SubscriptionForm from '../components/SubscriptionForm';
+import { getCollection } from 'astro:content';
+
+const allNews = await getCollection('news');
+const featuredNews = allNews.filter(n => n.data.isFeatured).slice(0, 3);
+const recentNews = allNews.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const healthNews = recentNews.filter(n => n.data.category === 'SALUD').slice(0, 4);
+const lifestyleNews = recentNews.filter(n => n.data.category === 'ESTILO DE VIDA').slice(0, 4);
+
+const allMagazines = await getCollection('magazines');
+const latestMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime() - a.data.editionDate.getTime()).slice(0, 4);
+---
+
+<Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
+	<main class="space-y-16">
+		
+		<!-- Hero Section -->
+		<section class="grid grid-cols-1 md:grid-cols-12 gap-10 min-h-[600px] py-6">
+			{featuredNews[0] && (
+				<div class="col-span-1 md:col-span-8">
+					<ArticleCard article={featuredNews[0].data} size="large" />
+				</div>
+			)}
+			<div class="col-span-1 md:col-span-4 flex flex-col gap-8">
+				{featuredNews.slice(1, 3).map(article => (
+					<ArticleCard article={article.data} size="small" />
+				))}
+				<div class="bg-ee-sand p-8 text-ee-brown-dark shadow-xl border-4 border-white transform hover:-rotate-1 transition-transform">
+					<h3 class="font-dm-serif-display text-2xl uppercase mb-3">Newsletter Diario</h3>
+					<p class="font-poppins text-ee-body mb-6">Recibe las notas destacadas de la mañana directamente en tu bandeja de entrada.</p>
+					<a href="#subscribe" class="inline-block border-2 border-ee-brown-dark px-6 py-2 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-ee-brown-dark hover:text-white transition-all">Scribirse</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Banner de Anuncio -->
+		<div class="w-full bg-ee-brown-dark h-32 flex items-center justify-center opacity-10 group cursor-pointer relative overflow-hidden">
+			<div class="absolute inset-0 flex items-center justify-center group-hover:bg-ee-terracotta/10 transition-colors">
+				<span class="font-dm-serif text-3xl italic tracking-widest opacity-30 select-none">ESPACIO PUBLICITARIO</span>
+			</div>
+		</div>
+
+		<!-- Salud Section (Big on left, list on right) -->
+		<section>
+			<SectionHeader title="Salud & Bienestar" color="cyan" />
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+				{healthNews[0] && (
+					<div class="col-span-1">
+						<ArticleCard article={healthNews[0].data} size="large" />
+					</div>
+				)}
+				<div class="col-span-1 flex flex-col">
+					{healthNews.slice(1).map(article => (
+						<ArticleCard article={article.data} size="list" />
+					))}
+					{healthNews.length < 2 && (
+						<div class="p-6 border-2 border-dashed border-ee-cyan-muted/20 text-center opacity-30 italic">Más contenido de salud próximamente...</div>
+					)}
+				</div>
+			</div>
+		</section>
+
+		<!-- Subscription Call to Action -->
+		<div id="subscribe" class="scroll-mt-24">
+			<SubscriptionForm client:load />
+		</div>
+
+		<!-- Revista Archive Grid Preview -->
+		<section>
+			<SectionHeader title="Últimas Revistas" color="terracotta" />
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+				{latestMagazines.map(mag => (
+					<MagazineCover magazine={mag.data} />
+				))}
+				{latestMagazines.length === 0 && (
+					<div class="col-span-full py-20 text-center bg-ee-sand/10 border-ee-tile opacity-30">Cargando ediciones digitales...</div>
+				)}
+			</div>
+			<div class="text-center mt-12">
+				<a href="/revista" class="inline-block border-b-4 border-ee-terracotta/20 text-ee-terracotta font-dm-serif-display text-2xl uppercase tracking-[0.2em] px-8 py-2 hover:border-ee-terracotta hover:scale-110 transition-all duration-300">Explorar Archivo Completo</a>
+			</div>
+		</section>
+
+		<!-- Estilo de Vida section -->
+		<section class="pb-20">
+			<SectionHeader title="Estilo de Vida" color="green" />
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+				{lifestyleNews.map(article => (
+					<ArticleCard article={article.data} size="small" />
+				))}
+				{lifestyleNews.length === 0 && (
+					<div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">Nuevas tendencias holísticas en camino...</div>
+				)}
+			</div>
+		</section>
+
+	</main>
+</Layout>

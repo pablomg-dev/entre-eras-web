@@ -1,0 +1,44 @@
+---
+interface Magazine {
+	title: string;
+	coverImage: string;
+	editionDate: Date;
+	flipbookUrl: string;
+	isPremium: boolean;
+    slug?: string;
+}
+
+interface Props {
+	magazine: Magazine;
+}
+
+const { magazine } = Astro.props;
+---
+
+<div class="flex flex-col gap-6 group cursor-pointer mb-12">
+	<div class="relative overflow-hidden aspect-[3/4] shadow-2xl skew-y-1 transition-transform group-hover:skew-y-0 group-hover:scale-105 duration-500 bg-ee-brown-dark/5">
+		<img 
+			src={magazine.coverImage} 
+			alt={magazine.title} 
+			class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+		/>
+		{magazine.isPremium && (
+			<div class="absolute top-4 right-4 bg-ee-terracotta text-white px-3 py-1 font-dm-serif-display text-[10px] tracking-widest uppercase shadow-md rotate-3 group-hover:rotate-0 transition-transform">
+				Premium
+			</div>
+		)}
+		<div class="absolute inset-0 bg-gradient-to-t from-ee-brown-dark/40 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+			<button class="bg-white text-ee-brown-dark px-6 py-2 font-poppins font-semibold uppercase tracking-widest text-[10px] hover:bg-ee-green-muted hover:text-white transition-colors">
+				Leer Revista
+			</button>
+		</div>
+	</div>
+	<div class="text-center pt-2">
+		<h3 class="font-playfair text-2xl text-ee-brown-dark leading-tight group-hover:text-ee-green-muted transition-colors">
+			{magazine.title}
+		</h3>
+		<time class="font-dm-serif-display text-xs text-ee-cyan-muted italic opacity-70 uppercase tracking-widest mt-2 block">
+			{magazine.editionDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
+		</time>
+	</div>
+</div>

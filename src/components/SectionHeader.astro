@@ -1,0 +1,20 @@
+---
+interface Props {
+	title: string;
+	color?: 'green' | 'terracotta' | 'cyan' | 'brown';
+}
+
+const { title, color = 'brown' } = Astro.props;
+
+const colorClasses = {
+	green: 'border-ee-green-muted text-ee-green-muted',
+	terracotta: 'border-ee-terracotta text-ee-terracotta',
+	cyan: 'border-ee-cyan-muted text-ee-cyan-muted',
+	brown: 'border-ee-brown-dark text-ee-brown-dark',
+};
+---
+
+<div class={`flex items-center gap-4 border-b-2 mb-8 ${colorClasses[color]} pb-2`}>
+	<h2 class="font-dm-serif-display text-ee-section uppercase tracking-widest">{title}</h2>
+	<div class="flex-grow border-t-2 border-inherit opacity-20 h-0"></div>
+</div>

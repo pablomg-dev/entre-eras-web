@@ -1,0 +1,118 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "EE - Estilo Editorial | Revista Digital y Periódico Holístico" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Serif+Text&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-white text-ee-gray-dark font-poppins selection:bg-ee-green-bg/30 selection:text-ee-terracotta">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<!-- Header -->
+			<header class="py-10 border-b-4 border-ee-brown-dark mb-8">
+				<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+					<div class="hidden md:flex gap-4 text-ee-green-muted invisible">
+						{/* Placeholder to keep layout balance or just empty div */}
+					</div>
+					
+					<div class="text-center flex flex-col items-center">
+						<a href="/" class="block mb-2">
+							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-24 md:h-32 w-auto object-contain hover:scale-105 transition-transform duration-300" />
+						</a>
+						<p class="font-dm-serif-display text-ee-section text-ee-brown-dark tracking-[0.2em] uppercase">Estilo Editorial • Holístico</p>
+					</div>
+
+					<div>
+						<button class="bg-ee-terracotta text-white px-8 py-3 font-poppins font-semibold uppercase tracking-widest hover:bg-ee-brown-dark transition-all duration-300 shadow-md">
+							Suscribirme
+						</button>
+					</div>
+				</div>
+				
+				<nav class="mt-10">
+					<ul class="flex flex-wrap justify-center gap-x-12 gap-y-4 font-dm-serif-display text-ee-section text-ee-brown-dark uppercase">
+						<li><a href="/" class="hover:text-ee-terracotta transition-colors">Inicio</a></li>
+						<li><a href="/categoria/salud" class="hover:text-ee-terracotta transition-colors">Salud</a></li>
+						<li><a href="/categoria/estilo-de-vida" class="hover:text-ee-terracotta transition-colors">Estilo de Vida</a></li>
+						<li><a href="/categoria/cultura" class="hover:text-ee-terracotta transition-colors">Cultura</a></li>
+						<li><a href="/revista" class="hover:text-ee-terracotta transition-colors">Revista</a></li>
+						<li><a href="/archivo" class="hover:text-ee-terracotta transition-colors">Archivo</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<slot />
+
+			<!-- Footer -->
+			<footer class="mt-20 py-12 border-t-2 border-ee-brown-dark/20 bg-stone-50">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+					<div class="col-span-1 md:col-span-2">
+						<img src="/logo.jpeg" alt="EE Logo" class="h-16 w-auto mb-6 grayscale opacity-80" />
+						<p class="font-poppins text-ee-body leading-relaxed max-w-sm mb-6">
+							Tu fuente de noticias editorial con un enfoque holístico y consciente. 
+							Exploramos la conexión entre bienestar, cultura y sociedad.
+						</p>
+						<div class="flex gap-5 text-ee-gray-dark/50">
+							<a href="#" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+							</a>
+							<a href="#" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+							</a>
+							<a href="#" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="YouTube">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.12 1 12 1 12s0 3.88.42 5.58a2.78 2.78 0 0 0 1.94 2c1.71.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.88 23 12 23 12s0-3.88-.42-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+							</a>
+						</div>
+					</div>
+					<div>
+						<h3 class="font-dm-serif-display text-ee-section text-ee-brown-dark mb-4 uppercase">Lo más visto</h3>
+						<ul class="space-y-3 font-poppins text-ee-body">
+							<li><a href="#" class="hover:text-ee-terracotta">Meditación urbana</a></li>
+							<li><a href="#" class="hover:text-ee-terracotta">Cocina estacional</a></li>
+							<li><a href="#" class="hover:text-ee-terracotta">Entrevistas: Elena Estrada</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="font-dm-serif-display text-ee-section text-ee-brown-dark mb-4 uppercase">Anunciantes</h3>
+						<div class="bg-ee-sand/20 border border-ee-sand p-6 text-center text-ee-sand italic font-dm-serif">
+							Tu marca aquí
+						</div>
+					</div>
+				</div>
+				<div class="text-center border-t border-ee-brown-dark/10 pt-8 mt-8">
+					<p class="font-poppins text-[11px] uppercase tracking-widest opacity-60">
+						&copy; 2026 EE Estilo Editorial. Todos los derechos reservados.
+					</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--ee-green: #80956d;
+		--ee-terracotta: #9f5434;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		background-color: #fafafa;
+	}
+</style>
