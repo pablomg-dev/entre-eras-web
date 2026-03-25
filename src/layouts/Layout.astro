@@ -22,36 +22,51 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Serif+Text&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-white text-ee-gray-dark font-poppins selection:bg-ee-green-bg/30 selection:text-ee-terracotta">
+		<!-- Top Terracotta Strip -->
+		<div class="bg-ee-terracotta text-white py-2 shadow-sm">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+				<a href="#subscribe" class="font-dm-serif-display text-[10px] md:text-xs uppercase tracking-[0.2em] hover:text-white/80 transition-colors">
+					Suscribite
+				</a>
+				<div class="flex gap-4 items-center">
+					<a href="https://www.instagram.com/entreeras.ok/?hl=es-la" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition-opacity" aria-label="Instagram">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+					</a>
+					<a href="https://www.facebook.com/profile.php?id=61580788067697" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition-opacity" aria-label="Facebook">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+					</a>
+					<a href="mailto:revista.entreeras@gmail.com" class="hover:opacity-75 transition-opacity" aria-label="Email">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+					</a>
+				</div>
+			</div>
+		</div>
+
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Header -->
-			<header class="py-10 border-b-4 border-ee-brown-dark mb-8">
-				<div class="flex flex-col md:flex-row justify-between items-center gap-6">
-					<div class="hidden md:flex gap-4 text-ee-green-muted invisible">
-						{/* Placeholder to keep layout balance or just empty div */}
-					</div>
-					
+			<header class="py-12 border-b-2 border-ee-brown-dark/10 mb-8">
+				<div class="flex flex-col items-center gap-6">
 					<div class="text-center flex flex-col items-center">
-						<a href="/" class="block mb-2">
-							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-24 md:h-32 w-auto object-contain hover:scale-105 transition-transform duration-300" />
+						<a href="/" class="block mb-4">
+							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-32 md:h-48 w-auto object-contain hover:scale-105 transition-transform duration-500" />
 						</a>
-						<p class="font-dm-serif-display text-ee-section text-ee-brown-dark tracking-[0.2em] uppercase">Estilo Editorial • Holístico</p>
-					</div>
-
-					<div>
-						<button class="bg-ee-terracotta text-white px-8 py-3 font-poppins font-semibold uppercase tracking-widest hover:bg-ee-brown-dark transition-all duration-300 shadow-md">
-							Suscribirme
-						</button>
+						<div class="flex flex-col items-center gap-1">
+							<p class="font-dm-serif-display text-ee-section text-ee-brown-dark tracking-[0.3em] uppercase">Estilo Editorial • Holístico</p>
+							<p class="font-poppins text-[12px] text-ee-terracotta uppercase tracking-[0.4em] font-medium">Hacia una vida consciente</p>
+						</div>
 					</div>
 				</div>
 				
-				<nav class="mt-10">
-					<ul class="flex flex-wrap justify-center gap-x-12 gap-y-4 font-dm-serif-display text-ee-section text-ee-brown-dark uppercase">
+				<nav class="mt-12">
+					<ul class="flex flex-wrap justify-center gap-x-8 gap-y-4 font-dm-serif-display text-[13px] text-ee-brown-dark uppercase tracking-wider">
 						<li><a href="/" class="hover:text-ee-terracotta transition-colors">Inicio</a></li>
-						<li><a href="/categoria/salud" class="hover:text-ee-terracotta transition-colors">Salud</a></li>
-						<li><a href="/categoria/estilo-de-vida" class="hover:text-ee-terracotta transition-colors">Estilo de Vida</a></li>
-						<li><a href="/categoria/cultura" class="hover:text-ee-terracotta transition-colors">Cultura</a></li>
-						<li><a href="/revista" class="hover:text-ee-terracotta transition-colors">Revista</a></li>
-						<li><a href="/archivo" class="hover:text-ee-terracotta transition-colors">Archivo</a></li>
+						<li><a href="/categoria/sociedad-en-transicion" class="hover:text-ee-terracotta transition-colors">Sociedad en Transición</a></li>
+						<li><a href="/categoria/huerto-activo" class="hover:text-ee-terracotta transition-colors">Huerto Activo</a></li>
+						<li><a href="/categoria/nuevos-vinculos" class="hover:text-ee-terracotta transition-colors">Nuevos Vínculos</a></li>
+						<li><a href="/categoria/salud-integral" class="hover:text-ee-terracotta transition-colors">Salud Integral</a></li>
+						<li><a href="/categoria/camino-interior" class="hover:text-ee-terracotta transition-colors">Camino Interior</a></li>
+						<li><a href="/categoria/gestacion-y-crianza" class="hover:text-ee-terracotta transition-colors">Gestación y Crianza</a></li>
+						<li><a href="/categoria/como-se-hace" class="hover:text-ee-terracotta transition-colors">Cómo se hace</a></li>
 					</ul>
 				</nav>
 			</header>

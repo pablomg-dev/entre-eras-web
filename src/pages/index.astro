@@ -7,11 +7,12 @@ import SubscriptionForm from '../components/SubscriptionForm';
 import { getCollection } from 'astro:content';
 
 const allNews = await getCollection('news');
-const featuredNews = allNews.filter(n => n.data.isFeatured).slice(0, 3);
+const featuredNews = allNews.filter(n => n.data.isFeatured).slice(0, 4); // Fetch 4 for Hero
 const recentNews = allNews.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const healthNews = recentNews.filter(n => n.data.category === 'SALUD').slice(0, 4);
-const lifestyleNews = recentNews.filter(n => n.data.category === 'ESTILO DE VIDA').slice(0, 4);
+const healthNews = recentNews.filter(n => n.data.category === 'SALUD INTEGRAL').slice(0, 4);
+const societyNews = recentNews.filter(n => n.data.category === 'SOCIEDAD EN TRANSICIÓN').slice(0, 4);
+const interiorNews = recentNews.filter(n => n.data.category === 'CAMINO INTERIOR').slice(0, 4);
 
 const allMagazines = await getCollection('magazines');
 const latestMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime() - a.data.editionDate.getTime()).slice(0, 4);
@@ -28,16 +29,29 @@ const latestMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime()
 				</div>
 			)}
 			<div class="col-span-1 md:col-span-4 flex flex-col gap-8">
-				{featuredNews.slice(1, 3).map(article => (
+				{featuredNews.slice(1, 4).map(article => (
 					<ArticleCard article={article.data} size="small" />
 				))}
-				<div class="bg-ee-sand p-8 text-ee-brown-dark shadow-xl border-4 border-white transform hover:-rotate-1 transition-transform">
-					<h3 class="font-dm-serif-display text-2xl uppercase mb-3">Newsletter Diario</h3>
-					<p class="font-poppins text-ee-body mb-6">Recibe las notas destacadas de la mañana directamente en tu bandeja de entrada.</p>
-					<a href="#subscribe" class="inline-block border-2 border-ee-brown-dark px-6 py-2 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-ee-brown-dark hover:text-white transition-all">Scribirse</a>
-				</div>
+				{featuredNews.length < 4 && (
+					<div class="bg-ee-sand p-8 text-ee-brown-dark shadow-xl border-4 border-white transform hover:-rotate-1 transition-transform">
+						<h3 class="font-dm-serif-display text-2xl uppercase mb-3">EE Consciente</h3>
+						<p class="font-poppins text-ee-body mb-6">Próximamente más notas sobre nuevos paradigmas y vida holística.</p>
+					</div>
+				)}
 			</div>
 		</section>
+
+		<!-- Terracotta Separator Strip -->
+		<div class="bg-ee-terracotta text-white py-12 px-8 -mx-4 sm:-mx-6 lg:-mx-8 text-center shadow-inner relative overflow-hidden">
+			<div class="absolute inset-0 opacity-10 flex items-center justify-center select-none pointer-events-none">
+				<span class="font-playfair text-9xl italic">Vida Consciente</span>
+			</div>
+			<div class="relative z-10 max-w-4xl mx-auto">
+				<h3 class="font-dm-serif-display text-2xl md:text-3xl uppercase tracking-[0.3em] mb-4">Membresía Digital</h3>
+				<p class="font-dm-serif text-xl italic text-white/80 mb-8 max-w-lg mx-auto">Únete para acceder a ediciones exclusivas y contenido de archivo.</p>
+				<a href="#subscribe" class="inline-block border-2 border-white px-10 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-white hover:text-ee-terracotta transition-all shadow-lg">Suscribirme hoy</a>
+			</div>
+		</div>
 
 		<!-- Banner de Anuncio -->
 		<div class="w-full bg-ee-brown-dark h-32 flex items-center justify-center opacity-10 group cursor-pointer relative overflow-hidden">
@@ -87,15 +101,28 @@ const latestMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime()
 			</div>
 		</section>
 
-		<!-- Estilo de Vida section -->
-		<section class="pb-20">
-			<SectionHeader title="Estilo de Vida" color="green" />
+		<!-- Sociedad section -->
+		<section>
+			<SectionHeader title="Sociedad en Transición" color="brown" />
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-				{lifestyleNews.map(article => (
+				{societyNews.map(article => (
 					<ArticleCard article={article.data} size="small" />
 				))}
-				{lifestyleNews.length === 0 && (
-					<div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">Nuevas tendencias holísticas en camino...</div>
+				{societyNews.length === 0 && (
+					<div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">Nuevos paradigmas en camino...</div>
+				)}
+			</div>
+		</section>
+
+		<!-- Camino Interior section -->
+		<section class="pb-20">
+			<SectionHeader title="Camino Interior" color="green" />
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+				{interiorNews.map(article => (
+					<ArticleCard article={article.data} size="small" />
+				))}
+				{interiorNews.length === 0 && (
+					<div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">Explorando el tiempo natural...</div>
 				)}
 			</div>
 		</section>
