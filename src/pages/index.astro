@@ -22,22 +22,30 @@ const latestMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime()
 	<main class="space-y-16">
 		
 		<!-- Hero Section -->
-		<section class="grid grid-cols-1 md:grid-cols-12 gap-10 min-h-[600px] py-6">
-			{featuredNews[0] && (
-				<div class="col-span-1 md:col-span-8">
-					<ArticleCard article={featuredNews[0].data} size="large" />
-				</div>
-			)}
-			<div class="col-span-1 md:col-span-4 flex flex-col gap-8">
-				{featuredNews.slice(1, 4).map(article => (
-					<ArticleCard article={article.data} size="small" />
-				))}
-				{featuredNews.length < 4 && (
-					<div class="bg-ee-sand p-8 text-ee-brown-dark shadow-xl border-4 border-white transform hover:-rotate-1 transition-transform">
-						<h3 class="font-dm-serif-display text-2xl uppercase mb-3">EE Consciente</h3>
-						<p class="font-poppins text-ee-body mb-6">Próximamente más notas sobre nuevos paradigmas y vida holística.</p>
+		<section class="py-12 border-b-2 border-ee-brown-dark/5">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+				{featuredNews[0] && (
+					<div class="col-span-1">
+						<ArticleCard article={featuredNews[0].data} size="large" />
 					</div>
 				)}
+				<div class="col-span-1 flex flex-col justify-start">
+					{featuredNews.slice(1, 4).map(article => (
+						<ArticleCard article={article.data} size="list" />
+					))}
+					{featuredNews.length < 4 && (
+						<div class="py-6 border-b border-dashed border-ee-brown-dark/10 group cursor-pointer opacity-40">
+							<div class="flex gap-4 items-center">
+								<div class="flex-grow">
+									<span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">PRÓXIMAMENTE</span>
+									<h3 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">
+										Más notas sobre nuevos paradigmas y vida holística en camino...
+									</h3>
+								</div>
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
 		</section>
 

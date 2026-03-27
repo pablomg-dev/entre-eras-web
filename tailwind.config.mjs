@@ -14,8 +14,11 @@ export default {
         'ee-sand': '#c7a67a',
       },
       fontFamily: {
-        'playfair': ['"Playfair Display"', 'serif'],
-        'poppins': ['"Poppins"', 'sans-serif'],
+        'serif-body': ['"Lora"', 'serif'],
+        'sans-body': ['"Inter"', 'sans-serif'],
+        'playfair': ['"Lora"', 'serif'], // Aliasing for compatibility or replacement
+        'poppins': ['"Inter"', 'sans-serif'], // Redirecting old font to Inter for general legibility
+        'brand-poppins': ['"Poppins"', 'sans-serif'], // New specific class for branding
         'dm-serif': ['"DM Serif Text"', 'serif'],
         'dm-serif-display': ['"DM Serif Display"', 'serif'],
       },
