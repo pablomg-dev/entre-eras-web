@@ -1,43 +1,59 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import MagazineCover from '../components/MagazineCover.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import MagazineCover from "../components/MagazineCover.astro";
+import { getCollection } from "astro:content";
 
-const allMagazines = await getCollection('magazines');
-const sortedMagazines = allMagazines.sort((a, b) => b.data.editionDate.getTime() - a.data.editionDate.getTime());
+const allMagazines = await getCollection("magazines");
+const sortedMagazines = allMagazines.sort(
+  (a, b) => b.data.editionDate.getTime() - a.data.editionDate.getTime(),
+);
 ---
 
 <Layout title="Archivo de Revistas | EE Estilo Editorial">
-	<main class="py-12">
-		<SectionHeader title="Revistas Digitales" color="terracotta" />
-		
-		<div class="mb-16 max-w-2xl">
-			<p class="font-dm-serif text-2xl text-ee-terracotta italic leading-relaxed">
-				Explora nuestras ediciones pasadas y sumérgete en el mundo del bienestar consciente con nuestro visor interactivo Flipbook.
-			</p>
-		</div>
+  <main class="py-12">
+    <SectionHeader title="Revistas Digitales" color="terracotta" />
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16">
-			{sortedMagazines.map(mag => (
-				<MagazineCover magazine={mag.data} />
-			))}
-		</div>
+    <div class="mb-16 max-w-2xl">
+      <p
+        class="font-dm-serif text-2xl text-ee-terracotta italic leading-relaxed"
+      >
+        Explora nuestras ediciones pasadas y sumérgete en el mundo del bienestar
+        consciente con nuestro visor interactivo Flipbook.
+      </p>
+    </div>
 
-		{sortedMagazines.length === 0 && (
-			<div class="py-40 text-center">
-				<p class="font-poppins text-ee-body uppercase opacity-40 tracking-widest">No hay revistas disponibles en este momento.</p>
-			</div>
-		)}
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16"
+    >
+      {sortedMagazines.map((mag) => <MagazineCover magazine={mag.data} />)}
+    </div>
 
-		<section class="mt-24 bg-ee-brown-dark text-white p-12 text-center transform -rotate-1 shadow-2xl">
-			<h3 class="font-playfair text-4xl mb-6">¿Quieres la Experiencia Completa?</h3>
-			<p class="font-poppins text-lg opacity-80 max-w-xl mx-auto mb-10">
-				Suscríbete a nuestra membresía Premium para acceder a todas las ediciones anteriores y recibir contenido inédito.
-			</p>
-			<button class="bg-ee-terracotta text-white px-12 py-4 font-dm-serif-display uppercase tracking-widest hover:bg-white hover:text-ee-terracotta transition-all shadow-lg">
-				Suscribirse ahora
-			</button>
-		</section>
-	</main>
+    {
+      sortedMagazines.length === 0 && (
+        <div class="py-40 text-center">
+          <p class="font-poppins text-ee-body uppercase opacity-40 tracking-widest">
+            No hay revistas disponibles en este momento.
+          </p>
+        </div>
+      )
+    }
+
+    <section
+      class="mt-24 bg-ee-brown-dark text-white p-12 text-center transform -rotate-1 shadow-2xl"
+    >
+      <h3 class="font-playfair text-4xl mb-6">
+        ¿Quieres la Experiencia Completa?
+      </h3>
+      <p class="font-poppins text-lg opacity-80 max-w-xl mx-auto mb-10">
+        Suscríbete a nuestra membresía Premium para acceder a todas las
+        ediciones anteriores y recibir contenido inédito.
+      </p>
+      <button
+        class="bg-ee-terracotta text-white px-12 py-4 font-dm-serif-display uppercase tracking-widest hover:bg-white hover:text-ee-terracotta transition-all shadow-lg"
+      >
+        Suscribirse ahora
+      </button>
+    </section>
+  </main>
 </Layout>
