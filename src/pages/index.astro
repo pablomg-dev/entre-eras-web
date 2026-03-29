@@ -7,7 +7,10 @@ import SubscriptionForm from "../components/SubscriptionForm";
 import { getCollection } from "astro:content";
 
 const allNews = await getCollection("news");
-const featuredNews = allNews.filter((n) => n.data.isFeatured).slice(0, 5); // Fetch 5 for Hero
+const featuredNews = allNews
+  .filter((n) => n.data.isFeatured)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 4);
 const recentNews = allNews.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
