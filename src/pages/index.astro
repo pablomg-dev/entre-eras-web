@@ -7,7 +7,7 @@ import SubscriptionForm from "../components/SubscriptionForm";
 import { getCollection } from "astro:content";
 
 const allNews = await getCollection("news");
-const featuredNews = allNews.filter((n) => n.data.isFeatured).slice(0, 4); // Fetch 4 for Hero
+const featuredNews = allNews.filter((n) => n.data.isFeatured).slice(0, 5); // Fetch 5 for Hero
 const recentNews = allNews.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
@@ -39,7 +39,13 @@ const latestMagazines = allMagazines
         {
           featuredNews[0] && (
             <div class="col-span-1">
-              <ArticleCard article={{ ...featuredNews[0].data, slug: featuredNews[0].slug }} size="large" />
+              <ArticleCard
+                article={{
+                  ...featuredNews[0].data,
+                  slug: featuredNews[0].slug,
+                }}
+                size="large"
+              />
             </div>
           )
         }
@@ -48,7 +54,10 @@ const latestMagazines = allMagazines
             featuredNews
               .slice(1, 4)
               .map((article) => (
-                <ArticleCard article={{ ...article.data, slug: article.slug }} size="list" />
+                <ArticleCard
+                  article={{ ...article.data, slug: article.slug }}
+                  size="list"
+                />
               ))
           }
           {
@@ -114,6 +123,42 @@ const latestMagazines = allMagazines
       </div>
     </div>
 
+    <!-- Huerto Activo Section -->
+    <section>
+      <SectionHeader title="Huerto Activo" color="green" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {
+          huertNews[0] && (
+            <div class="col-span-1">
+              <ArticleCard
+                article={{ ...huertNews[0].data, slug: huertNews[0].slug }}
+                size="large"
+              />
+            </div>
+          )
+        }
+        <div class="col-span-1 flex flex-col">
+          {
+            huertNews
+              .slice(1)
+              .map((article) => (
+                <ArticleCard
+                  article={{ ...article.data, slug: article.slug }}
+                  size="list"
+                />
+              ))
+          }
+          {
+            huertNews.length < 2 && (
+              <div class="p-6 border-2 border-dashed border-ee-green-muted/20 text-center opacity-30 italic">
+                Más contenido de huerto próximamente...
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
     <!-- Salud Section (Big on left, list on right) -->
     <section>
       <SectionHeader title="Salud & Bienestar" color="cyan" />
@@ -121,7 +166,10 @@ const latestMagazines = allMagazines
         {
           healthNews[0] && (
             <div class="col-span-1">
-              <ArticleCard article={{ ...healthNews[0].data, slug: healthNews[0].slug }} size="large" />
+              <ArticleCard
+                article={{ ...healthNews[0].data, slug: healthNews[0].slug }}
+                size="large"
+              />
             </div>
           )
         }
@@ -130,7 +178,10 @@ const latestMagazines = allMagazines
             healthNews
               .slice(1)
               .map((article) => (
-                <ArticleCard article={{ ...article.data, slug: article.slug }} size="list" />
+                <ArticleCard
+                  article={{ ...article.data, slug: article.slug }}
+                  size="list"
+                />
               ))
           }
           {
@@ -177,7 +228,10 @@ const latestMagazines = allMagazines
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {
           societyNews.map((article) => (
-            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
+            <ArticleCard
+              article={{ ...article.data, slug: article.slug }}
+              size="small"
+            />
           ))
         }
         {
@@ -191,37 +245,21 @@ const latestMagazines = allMagazines
     </section>
 
     <!-- Camino Interior section -->
-    <section>
+    <section class="pb-20">
       <SectionHeader title="Camino Interior" color="green" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {
           interiorNews.map((article) => (
-            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
+            <ArticleCard
+              article={{ ...article.data, slug: article.slug }}
+              size="small"
+            />
           ))
         }
         {
           interiorNews.length === 0 && (
             <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
               Explorando el tiempo natural...
-            </div>
-          )
-        }
-      </div>
-    </section>
-
-    <!-- Huerto Activo section -->
-    <section class="pb-20">
-      <SectionHeader title="Huerto Activo" color="brown" />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {
-          huertNews.map((article) => (
-            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
-          ))
-        }
-        {
-          huertNews.length === 0 && (
-            <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
-              Cultivando vida verde...
             </div>
           )
         }
