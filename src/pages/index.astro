@@ -21,6 +21,9 @@ const societyNews = recentNews
 const interiorNews = recentNews
   .filter((n) => n.data.category === "CAMINO INTERIOR")
   .slice(0, 4);
+const huertNews = recentNews
+  .filter((n) => n.data.category === "HUERTO ACTIVO")
+  .slice(0, 4);
 
 const allMagazines = await getCollection("magazines");
 const latestMagazines = allMagazines
@@ -188,7 +191,7 @@ const latestMagazines = allMagazines
     </section>
 
     <!-- Camino Interior section -->
-    <section class="pb-20">
+    <section>
       <SectionHeader title="Camino Interior" color="green" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {
@@ -200,6 +203,25 @@ const latestMagazines = allMagazines
           interiorNews.length === 0 && (
             <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
               Explorando el tiempo natural...
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- Huerto Activo section -->
+    <section class="pb-20">
+      <SectionHeader title="Huerto Activo" color="brown" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {
+          huertNews.map((article) => (
+            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
+          ))
+        }
+        {
+          huertNews.length === 0 && (
+            <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
+              Cultivando vida verde...
             </div>
           )
         }
