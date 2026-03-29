@@ -24,9 +24,16 @@ export default {
       },
       fontSize: {
         'ee-title': ['55px', '1'],
-        'ee-body': ['13px', '1.35'],
+        'ee-body': ['14px', '1.35'],
         'ee-subhead': ['19px', '1.2'],
         'ee-section': ['16px', '1.2'],
+      },
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
       },
       letterSpacing: {
         'poppins-spaced': '1.35px',

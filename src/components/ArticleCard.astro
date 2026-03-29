@@ -15,10 +15,11 @@ interface Props {
 }
 
 const { article, size = 'small' } = Astro.props;
+const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 ---
 
 {size === 'large' ? (
-	<article class="flex flex-col gap-6 mb-12 group cursor-pointer">
+	<a href={articleUrl} class="block flex flex-col gap-6 mb-12 group cursor-pointer">
 		<div class="overflow-hidden aspect-[16/9] shadow-lg border border-ee-brown-dark/10">
 			<img 
 				src={article.image} 
@@ -27,18 +28,18 @@ const { article, size = 'small' } = Astro.props;
 			/>
 		</div>
 		<div class="flex flex-col gap-3">
-			<span class="font-dm-serif-display text-[14px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
-			<h3 class="font-playfair text-4xl text-ee-brown-dark leading-tight group-hover:text-ee-terracotta transition-colors">
+			<span class="font-dm-serif-display text-xs md:text-sm text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+			<h3 class="font-playfair text-2xl md:text-3xl lg:text-4xl text-ee-brown-dark leading-tight group-hover:text-ee-terracotta transition-colors">
 				{article.title}
 			</h3>
-			<p class="font-dm-serif text-ee-subhead text-ee-cyan-muted italic">
+			<p class="font-dm-serif text-sm md:text-base text-ee-cyan-muted italic">
 				{article.description}
 			</p>
 			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
 		</div>
-	</article>
+	</a>
 ) : size === 'small' ? (
-	<article class="flex flex-col gap-4 group cursor-pointer mb-8">
+	<a href={articleUrl} class="block flex flex-col gap-4 group cursor-pointer mb-8">
 		<div class="overflow-hidden aspect-[4/3] shadow-md border border-ee-brown-dark/10">
 			<img 
 				src={article.image} 
@@ -47,19 +48,19 @@ const { article, size = 'small' } = Astro.props;
 			/>
 		</div>
 		<div class="flex flex-col gap-2">
-			<span class="font-dm-serif-display text-[12px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
-			<h3 class="font-playfair text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
+			<span class="font-dm-serif-display text-[10px] md:text-xs text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+			<h3 class="font-playfair text-xl md:text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
 				{article.title}
 			</h3>
 			<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
 		</div>
-	</article>
+	</a>
 ) : (
-	<article class="py-4 border-b border-ee-brown-dark/10 group cursor-pointer">
+	<a href={articleUrl} class="block py-4 border-b border-ee-brown-dark/10 group cursor-pointer">
 		<div class="flex gap-4 items-center">
 			<div class="flex-grow">
 				<span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
-				<h3 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">
+				<h3 class="font-playfair text-base md:text-lg text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">
 					{article.title}
 				</h3>
 			</div>
@@ -69,5 +70,5 @@ const { article, size = 'small' } = Astro.props;
 				</div>
 			)}
 		</div>
-	</article>
+	</a>
 )}

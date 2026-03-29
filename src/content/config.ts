@@ -10,6 +10,7 @@ const news = defineCollection({
     image: z.string(),
     isFeatured: z.boolean().default(false),
     author: z.string(),
+    gallery: z.array(z.string()).optional(),
   }),
 });
 

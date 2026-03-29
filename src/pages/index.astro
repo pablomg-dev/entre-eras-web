@@ -36,7 +36,7 @@ const latestMagazines = allMagazines
         {
           featuredNews[0] && (
             <div class="col-span-1">
-              <ArticleCard article={featuredNews[0].data} size="large" />
+              <ArticleCard article={{ ...featuredNews[0].data, slug: featuredNews[0].slug }} size="large" />
             </div>
           )
         }
@@ -45,7 +45,7 @@ const latestMagazines = allMagazines
             featuredNews
               .slice(1, 4)
               .map((article) => (
-                <ArticleCard article={article.data} size="list" />
+                <ArticleCard article={{ ...article.data, slug: article.slug }} size="list" />
               ))
           }
           {
@@ -118,7 +118,7 @@ const latestMagazines = allMagazines
         {
           healthNews[0] && (
             <div class="col-span-1">
-              <ArticleCard article={healthNews[0].data} size="large" />
+              <ArticleCard article={{ ...healthNews[0].data, slug: healthNews[0].slug }} size="large" />
             </div>
           )
         }
@@ -127,7 +127,7 @@ const latestMagazines = allMagazines
             healthNews
               .slice(1)
               .map((article) => (
-                <ArticleCard article={article.data} size="list" />
+                <ArticleCard article={{ ...article.data, slug: article.slug }} size="list" />
               ))
           }
           {
@@ -174,7 +174,7 @@ const latestMagazines = allMagazines
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {
           societyNews.map((article) => (
-            <ArticleCard article={article.data} size="small" />
+            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
           ))
         }
         {
@@ -193,7 +193,7 @@ const latestMagazines = allMagazines
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         {
           interiorNews.map((article) => (
-            <ArticleCard article={article.data} size="small" />
+            <ArticleCard article={{ ...article.data, slug: article.slug }} size="small" />
           ))
         }
         {

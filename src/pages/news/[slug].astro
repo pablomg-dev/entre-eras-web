@@ -28,11 +28,25 @@ const { Content } = await entry.render();
 			</div>
 		</header>
 
-		<div class="mb-16 aspect-[21/9] overflow-hidden rounded-sm shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
+		<div class="mb-8 md:mb-12 aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm shadow-lg">
 			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
 		</div>
 
-		<div class="prose prose-lg prose-stone max-w-none font-poppins text-ee-body leading-[1.8] text-ee-gray-dark first-letter:text-6xl first-letter:font-playfair first-letter:float-left first-letter:mr-4 first-letter:mt-2 first-letter:text-ee-terracotta">
+		{entry.data.gallery && entry.data.gallery.length > 0 && (
+			<div class="mb-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+				{entry.data.gallery.map((img: string, index: number) => (
+					<div class="overflow-hidden aspect-[4/3] shadow-md border border-ee-brown-dark/10">
+						<img 
+							src={img} 
+							alt={`${entry.data.title} - Imagen ${index + 1}`} 
+							class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+						/>
+					</div>
+				))}
+			</div>
+		)}
+
+		<div class="prose prose-lg prose-stone max-w-none font-poppins text-sm md:text-base leading-[1.8] text-ee-gray-dark">
 			<Content />
 		</div>
 
@@ -42,7 +56,7 @@ const { Content } = await entry.render();
 				<a href="#" class="bg-ee-green-muted text-white p-2 hover:bg-ee-brown-dark transition-colors">TW</a>
 				<a href="#" class="bg-ee-green-muted text-white p-2 hover:bg-ee-brown-dark transition-colors">WA</a>
 			</div>
-			<a href="/" class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta">← Volver al Periódico</a>
+			<a href="/" class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta">← Volver al Inicio</a>
 		</footer>
 	</article>
 </Layout>
@@ -50,6 +64,37 @@ const { Content } = await entry.render();
 <style is:global>
 	.prose p {
 		margin-bottom: 2rem;
+	}
+	.prose > p:first-of-type::first-letter {
+		float: left;
+		font-family: 'Playfair Display', serif;
+		font-size: 2.5rem !important;
+		line-height: 0.7;
+		padding-right: 0.5rem;
+		padding-top: 0.15rem;
+		color: #c46d5e;
+		font-weight: 700;
+	}
+	@media (min-width: 640px) {
+		.prose > p:first-of-type::first-letter {
+			font-size: 3rem !important;
+		}
+	}
+	@media (min-width: 768px) {
+		.prose > p:first-of-type::first-letter {
+			font-size: 3.5rem !important;
+			padding-top: 0.1rem;
+		}
+	}
+	@media (min-width: 1024px) {
+		.prose > p:first-of-type::first-letter {
+			font-size: 4.5rem !important;
+		}
+	}
+	@media (min-width: 1280px) {
+		.prose > p:first-of-type::first-letter {
+			font-size: 5rem !important;
+		}
 	}
 	.prose h2 {
 		font-family: 'DM Serif Display', serif;
