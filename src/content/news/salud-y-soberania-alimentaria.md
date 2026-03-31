@@ -1,6 +1,6 @@
 ---
 title: "Salud y Soberanía Alimentaria"
-description: "Un espacio dedicado a recuperar el vínculo con la tierra a través de la agroecología. Cómo cultivar alimentos de manera natural respetando ciclos y equilibrio."
+description: "Un espacio dedicado a recuperar el vínculo con la tierra a través de la agroecología"
 pubDate: 2026-03-29
 category: "HUERTO ACTIVO"
 image: "/articulo-1/huerto-1.jpeg"
