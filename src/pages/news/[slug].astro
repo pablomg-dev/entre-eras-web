@@ -11,6 +11,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const allNews = await getCollection('news');
+const relatedNews = allNews
+  .filter(n => n.data.category === entry.data.category && n.slug !== entry.slug)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
 <Layout title={`${entry.data.title} | EE Estilo Editorial`}>
@@ -59,7 +65,49 @@ const { Content } = await entry.render();
 			<Content />
 		</div>
 
-		<footer class="mt-20 pt-12 border-t-4 border-ee-brown-dark flex flex-col md:flex-row justify-between items-center gap-8">
+		<!-- Revista CTA -->
+		<div class="mt-16 p-8 bg-ee-sand/10 border border-ee-sand/30 text-center">
+			<p class="font-dm-serif text-lg text-ee-brown-dark italic mb-4">
+				Si querés leer la nota completa visitá la revista digital
+			</p>
+			<a href="/revista" class="inline-block bg-ee-terracotta text-white px-8 py-3 font-poppins text-sm uppercase tracking-widest hover:bg-ee-brown-dark transition-colors">
+				Ver Revista
+			</a>
+		</div>
+
+		<!-- Related Articles -->
+		{relatedNews.length > 0 && (
+			<div class="mt-16 pt-12 border-t border-ee-brown-dark/10">
+				<h3 class="font-dm-serif-display text-xl text-ee-brown-dark mb-8 text-center uppercase tracking-wider">Notas relacionadas</h3>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					{relatedNews.map(article => (
+						<a href={`/news/${article.slug}`} class="block group">
+							<div class="overflow-hidden aspect-[4/3] mb-3">
+								<img 
+									src={article.data.image} 
+									alt={article.data.title} 
+									class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+								/>
+							</div>
+							<h4 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-terracotta transition-colors">
+								{article.data.title}
+							</h4>
+							<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">
+								{article.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
+							</time>
+						</a>
+					))}
+				</div>
+			</div>
+		)}
+
+		<footer class="mt-20 pt-12 border-t-4 border-ee-brown-dark flex flex-col justify-center items-center gap-6 text-center">
+			<p class="font-dm-serif text-lg text-ee-cyan-muted italic max-w-2xl">
+				Una plataforma editorial del nuevo paradigma, donde bienestar, cultura y sociedad se unen para inspirar una forma más consciente de habitar el mundo.
+			</p>
+			<p class="font-poppins text-xs opacity-40 uppercase tracking-widest">
+				Queda hecho el depósito que marca la ley 11.723
+			</p>
 			<a href="/" class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta">← Volver al Inicio</a>
 		</footer>
 	</article>
