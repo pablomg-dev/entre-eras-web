@@ -6,7 +6,7 @@ category: "HUERTO ACTIVO"
 image: "/articulo-1/huerto-1.jpeg"
 isFeatured: true
 author: "María Valeria Novello"
-authorImage: "/articulo-1/huerto-1.jpg"
+authorImage: "/articulo-1/madrehierbas.jpg"
 authorSocial: "https://instagram.com/madrehierbas"
 ---
 
