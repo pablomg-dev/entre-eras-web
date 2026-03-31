@@ -20,8 +20,6 @@ Hay diferentes diseños que varían según el espacio y el sistema de riego. Y p
 
 Un sistema eficiente incluye riego por goteo, exudación (mangueras porosas) o botellas recicladas.
 
-![Diseños de huerto](/articulo-1/huerto-3.jpeg)
-
 ## Diferentes diseños
 
 **Bancal Elevado (Huerto Intensivo)**
