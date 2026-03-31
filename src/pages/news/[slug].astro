@@ -26,6 +26,15 @@ const { Content } = await entry.render();
 				<span class="w-1 h-1 bg-ee-brown-dark rounded-full"></span>
 				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
 			</div>
+			{entry.data.authorImage && (
+				<div class="flex justify-center mt-6">
+					<img 
+						src={entry.data.authorImage} 
+						alt={entry.data.author} 
+						class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-ee-terracotta/30 shadow-md"
+					/>
+				</div>
+			)}
 		</header>
 
 		<div class="mb-8 md:mb-12 aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm shadow-lg">
