@@ -24,7 +24,7 @@ const { Content } = await entry.render();
 			<div class="flex items-center justify-center gap-6 font-poppins text-xs uppercase tracking-widest opacity-60">
 				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span></span>
 				<span class="w-1 h-1 bg-ee-brown-dark rounded-full"></span>
-				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
 			</div>
 		</header>
 

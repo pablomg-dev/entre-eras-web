@@ -35,7 +35,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<p class="font-dm-serif text-sm md:text-base text-ee-cyan-muted italic">
 				{article.description}
 			</p>
-			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}</time>
 		</div>
 	</a>
 ) : size === 'small' ? (
@@ -52,7 +52,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<h3 class="font-playfair text-xl md:text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
 				{article.title}
 			</h3>
-			<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+			<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}</time>
 		</div>
 	</a>
 ) : (
