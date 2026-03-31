@@ -12,8 +12,6 @@ Tener acceso a la comida es algo básico para el ser humano. Pero sabemos que es
 
 De ahí se deriva la importancia de pensar en organizarnos para tener nuestros propios Huertos o algún tipo de Huerta comunitaria.
 
-![Huertos comunitarios](/articulo-1/huerto-2.jpeg)
-
 ## Cómo diseñar un huerto
 
 A la hora de pensar en organizar un huerto es importante tener en cuenta varios aspectos, por ejemplo el espacio, la luz solar, contar con suministro de agua para riego y también una previsión de semillas de calidad. Todo esto hace a la soberanía alimentaria.
