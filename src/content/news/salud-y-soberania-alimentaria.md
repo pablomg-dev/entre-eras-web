@@ -6,6 +6,7 @@ category: "HUERTO ACTIVO"
 image: "/articulo-1/huerto-1.jpeg"
 isFeatured: true
 author: "María Valeria Novello"
+authorSocial: "https://instagram.com/madrehierbas"
 ---
 
 Tener acceso a la comida es algo básico para el ser humano. Pero sabemos que estamos transitando tiempos donde es difícil conseguir alimentos saludables, ya que los que suelen comprarse están tratados con agrotóxicos, sustancias químicas que se utilizan en la agricultura para el control de plagas y enfermedades, pero que son altamente perniciosos para nuestra salud. 

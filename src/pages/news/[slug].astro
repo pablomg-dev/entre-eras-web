@@ -22,7 +22,7 @@ const { Content } = await entry.render();
 				{entry.data.description}
 			</p>
 			<div class="flex items-center justify-center gap-6 font-poppins text-xs uppercase tracking-widest opacity-60">
-				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span></span>
+				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span>{entry.data.authorSocial && <a href={entry.data.authorSocial} target="_blank" rel="noopener noreferrer" class="text-ee-terracotta hover:underline ml-1">@madrehierbas</a>}</span>
 				<span class="w-1 h-1 bg-ee-brown-dark rounded-full"></span>
 				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
 			</div>
