@@ -37,8 +37,8 @@ const { Content } = await entry.render();
 			)}
 		</header>
 
-		<div class="mb-8 md:mb-12 aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm shadow-lg">
-			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+		<div class="mb-8 md:mb-12 aspect-[3/2] md:aspect-[4/3] overflow-hidden rounded-sm shadow-lg">
+			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-contain bg-ee-sand/10" />
 		</div>
 
 		{entry.data.gallery && entry.data.gallery.length > 0 && (
