@@ -27,24 +27,14 @@ const relatedNews = allNews
 			<p class="font-dm-serif text-ee-subhead text-ee-cyan-muted italic max-w-2xl mx-auto mb-8 font-light">
 				{entry.data.description}
 			</p>
-			<div class="flex items-center justify-center gap-6 font-poppins text-xs uppercase tracking-widest opacity-60">
+			<div class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60">
 				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span>{entry.data.authorSocial && <a href={entry.data.authorSocial} target="_blank" rel="noopener noreferrer" class="text-ee-terracotta hover:underline ml-1">@madrehierbas</a>}</span>
-				<span class="w-1 h-1 bg-ee-brown-dark rounded-full"></span>
 				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
 			</div>
-			{entry.data.authorImage && (
-				<div class="flex justify-center mt-4">
-					<img 
-						src={entry.data.authorImage} 
-						alt={entry.data.author} 
-						class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
-					/>
-				</div>
-			)}
 		</header>
 
 		<div class="mb-8 md:mb-12 aspect-[3/2] md:aspect-[4/3] overflow-hidden rounded-sm shadow-lg">
-			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-contain bg-ee-sand/10" />
+			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
 		</div>
 
 		{entry.data.gallery && entry.data.gallery.length > 0 && (
