@@ -26,19 +26,19 @@ Este es el repositorio oficial de **EE (Estilo Editorial)**, un portal de notici
    cd entre-eras-web
    ```
 
-2. **Instalar dependencias:**
+2. **Instalar dependencias (usando pnpm):**
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Iniciar el servidor de desarrollo:**
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 4. **Construir para producción:**
    ```bash
-   npm run build
+   pnpm build
    ```
 
 ## 📂 Estructura del Proyecto
