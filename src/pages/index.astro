@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import SectionFeatured from "../components/SectionFeatured.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import MagazineCover from "../components/MagazineCover.astro";
 import SubscriptionForm from "../components/SubscriptionForm";
@@ -84,82 +85,63 @@ const latestMagazines = allMagazines
       </div>
     </section>
 
-    <!-- Huerto Activo Section -->
-    <section>
-      <SectionHeader title="Huerto Activo" color="green" />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {
-          huertNews[0] && (
-            <div class="col-span-1">
-              <ArticleCard
-                article={{ ...huertNews[0].data, slug: huertNews[0].slug }}
-                size="large"
-              />
-            </div>
-          )
-        }
-        <div class="col-span-1 flex flex-col">
-          {
-            huertNews
-              .slice(1)
-              .map((article) => (
-                <ArticleCard
-                  article={{ ...article.data, slug: article.slug }}
-                  size="list"
-                />
-              ))
-          }
-          {
-            huertNews.length < 2 && (
-              <div class="p-6 border-2 border-dashed border-ee-green-muted/20 text-center opacity-30 italic">
-                Más contenido de huerto próximamente...
-              </div>
-            )
-          }
-        </div>
+    <!-- Terracotta Separator Strip -->
+    <div
+      class="bg-ee-terracotta text-white py-12 px-8 -mx-4 sm:-mx-6 lg:-mx-8 text-center shadow-inner relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 opacity-10 flex items-center justify-center select-none pointer-events-none"
+      >
+        <span class="font-playfair text-9xl italic">Vida Consciente</span>
       </div>
-    </section>
-
-    <!-- Salud Section (Big on left, list on right) -->
-    <section>
-      <SectionHeader title="Salud & Bienestar" color="cyan" />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {
-          healthNews[0] && (
-            <div class="col-span-1">
-              <ArticleCard
-                article={{ ...healthNews[0].data, slug: healthNews[0].slug }}
-                size="large"
-              />
-            </div>
-          )
-        }
-        <div class="col-span-1 flex flex-col">
-          {
-            healthNews
-              .slice(1)
-              .map((article) => (
-                <ArticleCard
-                  article={{ ...article.data, slug: article.slug }}
-                  size="list"
-                />
-              ))
-          }
-          {
-            healthNews.length < 2 && (
-              <div class="p-6 border-2 border-dashed border-ee-cyan-muted/20 text-center opacity-30 italic">
-                Más contenido de salud próximamente...
-              </div>
-            )
-          }
-        </div>
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h3
+          class="font-dm-serif-display text-2xl md:text-3xl uppercase tracking-[0.3em] mb-4"
+        >
+          Membresía Digital
+        </h3>
+        <p
+          class="font-dm-serif text-xl italic text-white/80 mb-8 max-w-lg mx-auto"
+        >
+          Únete para acceder a ediciones exclusivas y contenido de archivo.
+        </p>
+        <a
+          href="#subscribe"
+          class="inline-block border-2 border-white px-10 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-white hover:text-ee-terracotta transition-all shadow-lg scroll-smooth"
+          >Suscribirme hoy</a
+        >
       </div>
-    </section>
-
-    <!-- Subscription Call to Action -->
-    <div id="subscribe" class="scroll-mt-24">
-      <SubscriptionForm client:load />
     </div>
+
+    <!-- Banner de Anuncio -->
+    <div
+      class="w-full bg-ee-brown-dark h-32 flex items-center justify-center opacity-10 group cursor-pointer relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 flex items-center justify-center group-hover:bg-ee-terracotta/10 transition-colors"
+      >
+        <span
+          class="font-dm-serif text-3xl italic tracking-widest opacity-30 select-none"
+          >ESPACIO PUBLICITARIO</span
+        >
+      </div>
+    </div>
+
+    <!-- Huerto Activo Section -->
+    <SectionFeatured
+      sectionTitle="Huerto Activo"
+      color="green"
+      featured={huertNews[0] ? { ...huertNews[0].data, slug: huertNews[0].slug } : null}
+      articles={huertNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
+    />
+
+    <!-- Salud Section -->
+    <SectionFeatured
+      sectionTitle="Salud & Bienestar"
+      color="cyan"
+      featured={healthNews[0] ? { ...healthNews[0].data, slug: healthNews[0].slug } : null}
+      articles={healthNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
+    />
 
     <!-- Revista Archive Grid Preview -->
     <section>
@@ -184,47 +166,24 @@ const latestMagazines = allMagazines
     </section>
 
     <!-- Sociedad section -->
-    <section>
-      <SectionHeader title="Sociedad en Transición" color="brown" />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {
-          societyNews.map((article) => (
-            <ArticleCard
-              article={{ ...article.data, slug: article.slug }}
-              size="small"
-            />
-          ))
-        }
-        {
-          societyNews.length === 0 && (
-            <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
-              Nuevos paradigmas en camino...
-            </div>
-          )
-        }
-      </div>
-    </section>
+    <SectionFeatured
+      sectionTitle="Sociedad en Transición"
+      color="brown"
+      featured={societyNews[0] ? { ...societyNews[0].data, slug: societyNews[0].slug } : null}
+      articles={societyNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
+    />
 
     <!-- Camino Interior section -->
-    <section class="pb-20">
-      <SectionHeader title="Camino Interior" color="green" />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {
-          interiorNews.map((article) => (
-            <ArticleCard
-              article={{ ...article.data, slug: article.slug }}
-              size="small"
-            />
-          ))
-        }
-        {
-          interiorNews.length === 0 && (
-            <div class="col-span-full py-12 text-center opacity-20 font-dm-serif italic">
-              Explorando el tiempo natural...
-            </div>
-          )
-        }
-      </div>
-    </section>
+    <SectionFeatured
+      sectionTitle="Camino Interior"
+      color="green"
+      featured={interiorNews[0] ? { ...interiorNews[0].data, slug: interiorNews[0].slug } : null}
+      articles={interiorNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
+    />
+
+    <!-- Subscription Call to Action -->
+    <div id="subscribe" class="scroll-mt-24 pb-20">
+      <SubscriptionForm client:load />
+    </div>
   </main>
 </Layout>

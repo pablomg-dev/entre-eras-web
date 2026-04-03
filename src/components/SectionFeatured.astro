@@ -1,0 +1,87 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+
+interface Article {
+	title: string;
+	description: string;
+	category: string;
+	image: string;
+	pubDate: Date;
+	slug?: string;
+}
+
+interface Props {
+	sectionTitle: string;
+	color: 'green' | 'terracotta' | 'cyan' | 'brown';
+	featured: Article | null;
+	articles: Article[];
+	class?: string;
+}
+
+const { sectionTitle, color, featured, articles, class: className = '' } = Astro.props;
+const articleUrl = (article: Article) => article.slug ? `/news/${article.slug}` : '#';
+---
+
+<section class={className}>
+	<SectionHeader title={sectionTitle} color={color} />
+
+	{featured && (
+		<div class="flex flex-col items-center text-center mb-12">
+			<a href={articleUrl(featured)} class="block w-full max-w-3xl mb-8 group cursor-pointer">
+				<div class="overflow-hidden aspect-[16/9] shadow-lg border border-ee-brown-dark/10">
+					<img
+						src={featured.image}
+						alt={featured.title}
+						class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+					/>
+				</div>
+			</a>
+			<a href={articleUrl(featured)} class="group cursor-pointer max-w-2xl">
+				<span class="font-dm-serif-display text-xs md:text-sm text-ee-terracotta uppercase tracking-[0.1em]">{featured.category}</span>
+				<h3 class="font-playfair text-2xl md:text-3xl lg:text-4xl text-ee-brown-dark leading-tight group-hover:text-ee-terracotta transition-colors mt-2">
+					{featured.title}
+				</h3>
+				{featured.description && (
+					<p class="font-dm-serif text-sm md:text-base text-ee-cyan-muted italic mt-3">
+						{featured.description}
+					</p>
+				)}
+				<time class="font-poppins text-xs opacity-50 uppercase tracking-widest mt-3 block">{featured.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			</a>
+		</div>
+	)}
+
+	{articles.length > 0 && (
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			{articles.map((article) => (
+				<a href={articleUrl(article)} class="block flex flex-col gap-3 group cursor-pointer">
+					<div class="overflow-hidden aspect-[4/3] shadow-md border border-ee-brown-dark/10">
+						<img
+							src={article.image}
+							alt={article.title}
+							class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+						/>
+					</div>
+					<div class="flex flex-col gap-1">
+						<span class="font-dm-serif-display text-[10px] md:text-xs text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+						<h3 class="font-playfair text-lg md:text-xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
+							{article.title}
+						</h3>
+						{article.description && (
+							<p class="font-poppins text-xs text-ee-gray-dark/70 line-clamp-2 mt-1">
+								{article.description}
+							</p>
+						)}
+						<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest mt-1">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+					</div>
+				</a>
+			))}
+		</div>
+	)}
+
+	{!featured && articles.length === 0 && (
+		<div class="py-12 text-center opacity-20 font-dm-serif italic">
+			Más contenido próximamente...
+		</div>
+	)}
+</section>
