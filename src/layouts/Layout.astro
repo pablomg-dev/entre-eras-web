@@ -58,13 +58,65 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				</div>
 				
 				<nav class="mt-12">
-					<ul class="flex flex-wrap justify-center gap-x-8 gap-y-4 font-poppins text-sm md:text-base text-ee-brown-dark uppercase tracking-wider font-medium">
-						<li><a href="/categoria/sociedad-en-transicion" class="hover:text-ee-terracotta transition-colors">Sociedad en Transición</a></li>
-						<li><a href="/categoria/permacultura" class="hover:text-ee-terracotta transition-colors">Permacultura</a></li>
-						<li><a href="/categoria/salud-integral" class="hover:text-ee-terracotta transition-colors">Salud Integral</a></li>
-						<li><a href="/categoria/camino-interior" class="hover:text-ee-terracotta transition-colors">Camino Interior</a></li>
-						<li><a href="/categoria/proyectos" class="hover:text-ee-terracotta transition-colors">Proyectos</a></li>
-						<li><a href="/#subscribe" class="hover:text-ee-terracotta transition-colors">Quiénes Somos</a></li>
+					<ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-poppins text-sm md:text-base text-ee-brown-dark uppercase tracking-wider font-medium">
+						<li class="relative group">
+							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
+								Sociedad en Transición
+								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+							</button>
+							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
+								<a href="/categoria/nuevos-vinculos" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Nuevos Vínculos</a>
+								<a href="/categoria/educacion" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Educación</a>
+								<a href="/categoria/gestacion-y-crianza" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Gestación y Crianza</a>
+								<a href="/categoria/comunidad" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Comunidad</a>
+							</div>
+						</li>
+						<li class="relative group">
+							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
+								Permacultura
+								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+							</button>
+							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
+								<a href="/categoria/bioconstruccion" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Bioconstrucción</a>
+								<a href="/categoria/huerto-vivo" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Huerto Vivo</a>
+							</div>
+						</li>
+						<li class="relative group">
+							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
+								Salud Integral
+								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+							</button>
+							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
+								<a href="/categoria/alimentacion-consciente" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Alimentación Consciente</a>
+								<a href="/categoria/medicina-natural" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Medicina Natural</a>
+								<a href="/categoria/botiquin-natural-ancestral" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Botiquín Natural Ancestral</a>
+							</div>
+						</li>
+						<li class="relative group">
+							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
+								Camino Interior
+								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+							</button>
+							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
+								<a href="/categoria/tiempo-natural" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Tiempo Natural</a>
+								<a href="/categoria/astrologia-de-hoy" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Astrología de Hoy</a>
+								<a href="/categoria/recursos-terapeuticos" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Recursos Terapéuticos</a>
+							</div>
+						</li>
+						<li class="relative group">
+							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
+								Proyectos
+								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+							</button>
+							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
+								<a href="/categoria/voces" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Voces</a>
+								<a href="/categoria/modelos-emergentes" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Modelos Emergentes</a>
+								<a href="/categoria/economia-consciente" class="block px-4 py-2 text-xs normal-case tracking-normal hover:bg-ee-terracotta/10 hover:text-ee-terracotta transition-colors">Economía Consciente</a>
+							</div>
+						</li>
+						<li>
+							<a href="/#subscribe" class="hover:text-ee-terracotta transition-colors">Quiénes Somos</a>
+						</li>
 					</ul>
 				</nav>
 			</header>
@@ -119,6 +171,34 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 	</body>
 </html>
 
+<script is:inline>
+	document.querySelectorAll('.dropdown-toggle').forEach(function(btn) {
+		btn.addEventListener('click', function(e) {
+			e.preventDefault();
+			var menu = btn.parentElement.querySelector('.dropdown-menu');
+			if (menu) {
+				var isOpen = menu.classList.contains('show');
+				document.querySelectorAll('.dropdown-menu.show').forEach(function(m) {
+					m.classList.remove('show');
+					m.classList.add('hidden');
+				});
+				if (!isOpen) {
+					menu.classList.remove('hidden');
+					menu.classList.add('show');
+				}
+			}
+		});
+	});
+	document.addEventListener('click', function(e) {
+		if (!e.target.closest('.relative.group')) {
+			document.querySelectorAll('.dropdown-menu.show').forEach(function(m) {
+				m.classList.remove('show');
+				m.classList.add('hidden');
+			});
+		}
+	});
+</script>
+
 <style is:global>
 	:root {
 		--ee-green: #80956d;
@@ -129,5 +209,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 	}
 	body {
 		background-color: #fafafa;
+	}
+	.dropdown-menu.show {
+		display: block !important;
+		opacity: 1 !important;
+		visibility: visible !important;
 	}
 </style>
