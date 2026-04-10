@@ -24,7 +24,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<img 
 				src={article.image} 
 				alt={article.title} 
-				class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+				class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
 			/>
 		</div>
 		<div class="flex flex-col gap-3">
@@ -44,7 +44,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<img 
 				src={article.image} 
 				alt={article.title} 
-				class="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+				class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
 			/>
 		</div>
 		<div class="flex flex-col gap-2">
@@ -66,7 +66,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			</div>
 			{article.image && (
 				<div class="w-16 h-16 shrink-0 overflow-hidden">
-					<img src={article.image} class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0" />
+					<img src={article.image} class="w-full h-full object-cover" />
 				</div>
 			)}
 		</div>
