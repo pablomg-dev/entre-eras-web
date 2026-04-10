@@ -37,12 +37,16 @@ const latestMagazines = allMagazines
 
 <Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
   <main class="space-y-16">
-    <!-- Hero Section -->
+    <!-- Primera Parte: Sociedad -->
     <section class="py-12 border-b-2 border-ee-brown-dark/5">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {
-          featuredNews[0] && (
-            <div class="col-span-1">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <!-- Izquierda: VOCES Entrevista -->
+        <div class="lg:col-span-2">
+          <h2 class="font-dm-serif-display text-lg text-ee-terracotta uppercase tracking-[0.1em] mb-6 pb-3 border-b-4 border-ee-terracotta">
+            Voces
+          </h2>
+          {
+            featuredNews[0] && (
               <ArticleCard
                 article={{
                   ...featuredNews[0].data,
@@ -50,38 +54,86 @@ const latestMagazines = allMagazines
                 }}
                 size="large"
               />
-            </div>
-          )
-        }
-        <div class="col-span-1 flex flex-col justify-start">
-          {
-            featuredNews
-              .slice(1, 4)
-              .map((article) => (
-                <ArticleCard
-                  article={{ ...article.data, slug: article.slug }}
-                  size="list"
-                />
-              ))
-          }
-          {
-            featuredNews.length < 4 && (
-              <div class="py-6 border-b border-dashed border-ee-brown-dark/10 group cursor-pointer opacity-40">
-                <div class="flex gap-4 items-center">
-                  <div class="flex-grow">
-                    <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">
-                      PRÓXIMAMENTE
-                    </span>
-                    <h3 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">
-                      Más notas sobre nuevos paradigmas y vida holística en
-                      camino...
-                    </h3>
-                  </div>
-                </div>
-              </div>
             )
           }
         </div>
+        <!-- Derecha: Categorías -->
+        <div class="lg:col-span-3 grid grid-cols-2 gap-4">
+          <a href="/categoria/bioconstruccion" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400&h=300&fit=crop" alt="Bioconstrucción" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-lg text-white">Bioconstrucción</h3>
+            </div>
+          </a>
+          <a href="/categoria/huerto-vivo" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop" alt="Huerto Vivo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-lg text-white">Huerto Vivo</h3>
+            </div>
+          </a>
+          <a href="/categoria/nuevos-vinculos" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop" alt="Nuevos Vínculos" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-lg text-white">Nuevos Vínculos</h3>
+            </div>
+          </a>
+          <a href="/categoria/alimentacion-consciente" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop" alt="Alimentación" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-lg text-white">Alimentación</h3>
+            </div>
+          </a>
+          <a href="/categoria/gestacion-y-crianza" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10 col-span-2">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=300&fit=crop" alt="Gestación" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-lg text-white">Gestación</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secciones del Menu -->
+    <section class="py-12 border-b-2 border-ee-brown-dark/5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="/categoria/voces" class="group relative overflow-hidden aspect-[3/4] border border-ee-brown-dark/10">
+          <img src="/sociedad-1.jpeg" alt="Sociedad" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4">
+            <h3 class="font-dm-serif-display text-lg text-white uppercase tracking-wider">Sociedad</h3>
+          </div>
+        </a>
+        <a href="/categoria/huerto-vivo" class="group relative overflow-hidden aspect-[3/4] border border-ee-brown-dark/10">
+          <img src="/permacultura-1.jpeg" alt="Permacultura" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4">
+            <h3 class="font-dm-serif-display text-lg text-white uppercase tracking-wider">Permacultura</h3>
+          </div>
+        </a>
+        <a href="/categoria/alimentacion-consciente" class="group relative overflow-hidden aspect-[3/4] border border-ee-brown-dark/10">
+          <img src="/salud-1.jpeg" alt="Salud Integral" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4">
+            <h3 class="font-dm-serif-display text-lg text-white uppercase tracking-wider">Salud Integral</h3>
+          </div>
+        </a>
+        <a href="/categoria/tiempo-natural" class="group relative overflow-hidden aspect-[3/4] border border-ee-brown-dark/10">
+          <img src="/caminointerior-1.jpeg" alt="Camino Interior" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4">
+            <h3 class="font-dm-serif-display text-lg text-white uppercase tracking-wider">Camino Interior</h3>
+          </div>
+        </a>
       </div>
     </section>
 
