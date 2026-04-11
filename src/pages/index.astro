@@ -37,11 +37,11 @@ const latestMagazines = allMagazines
 
 <Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
   <main class="space-y-16">
-    <!-- Primera Parte: Sociedad -->
+    <!-- Primera Parte: Voces -->
     <section class="py-12 border-b-2 border-ee-brown-dark/5">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- Izquierda: VOCES Entrevista -->
-        <div class="lg:col-span-2">
+        <div class="col-span-1">
           <h2 class="font-dm-serif-display text-lg text-ee-terracotta uppercase tracking-[0.1em] mb-6 pb-3 border-b-4 border-ee-terracotta">
             Voces
           </h2>
@@ -57,46 +57,51 @@ const latestMagazines = allMagazines
             )
           }
         </div>
-        <!-- Derecha: Categorías -->
-        <div class="lg:col-span-3 grid grid-cols-2 gap-4">
-          <a href="/categoria/bioconstruccion" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
-            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400&h=300&fit=crop" alt="Bioconstrucción" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-3">
-              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-lg text-white">Bioconstrucción</h3>
+        <!-- Derecha: Categorías con texto -->
+        <div class="col-span-1 flex flex-col gap-4">
+          <a href="/categoria/bioconstruccion" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
+            <div class="w-24 h-20 shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=200&h=150&fit=crop" alt="Bioconstrucción" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-grow">
+              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Bioconstrucción</h3>
             </div>
           </a>
-          <a href="/categoria/huerto-vivo" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
-            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop" alt="Huerto Vivo" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-3">
-              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-lg text-white">Huerto Vivo</h3>
+          <a href="/categoria/huerto-vivo" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
+            <div class="w-24 h-20 shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=200&h=150&fit=crop" alt="Huerto Vivo" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-grow">
+              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Huerto Vivo</h3>
             </div>
           </a>
-          <a href="/categoria/nuevos-vinculos" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop" alt="Nuevos Vínculos" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-3">
-              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-lg text-white">Nuevos Vínculos</h3>
+          <a href="/categoria/nuevos-vinculos" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
+            <div class="w-24 h-20 shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&h=150&fit=crop" alt="Nuevos Vínculos" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-grow">
+              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Nuevos Vínculos</h3>
             </div>
           </a>
-          <a href="/categoria/alimentacion-consciente" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop" alt="Alimentación" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-3">
-              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-lg text-white">Alimentación</h3>
+          <a href="/categoria/alimentacion-consciente" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
+            <div class="w-24 h-20 shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=150&fit=crop" alt="Alimentación" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-grow">
+              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Alimentación</h3>
             </div>
           </a>
-          <a href="/categoria/gestacion-y-crianza" class="group relative overflow-hidden aspect-[4/3] border border-ee-brown-dark/10 col-span-2">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=300&fit=crop" alt="Gestación" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-3">
-              <span class="font-dm-serif-display text-[10px] text-white/70 uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-lg text-white">Gestación</h3>
+          <a href="/categoria/gestacion" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
+            <div class="w-24 h-20 shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&h=150&fit=crop" alt="Gestación" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-grow">
+              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
+              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Gestación</h3>
             </div>
           </a>
         </div>
