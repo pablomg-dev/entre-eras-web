@@ -5,16 +5,16 @@ import SectionFeatured from "../components/SectionFeatured.astro";
 import ArticleCard from "../components/ArticleCard.astro";
 import MagazineCover from "../components/MagazineCover.astro";
 import SubscriptionForm from "../components/SubscriptionForm";
+import NewsletterModal from "../components/NewsletterModal";
 import { getCollection } from "astro:content";
 
 const allNews = await getCollection("news");
-const featuredNews = allNews
-  .filter((n) => n.data.isFeatured)
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 4);
 const recentNews = allNews.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
+const mainFeatured = recentNews[0];
+const sidebarNews = recentNews.slice(1, 5);
+const secondaryNews = recentNews.slice(5, 8);
 
 const healthNews = recentNews
   .filter((n) => n.data.category === "SALUD INTEGRAL")
@@ -36,135 +36,81 @@ const latestMagazines = allMagazines
 ---
 
 <Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
+  <NewsletterModal client:load />
+
+  <!-- Hidden form for Netlify Discovery -->
+  <form name="newsletter-subscription" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nombre" />
+    <input type="text" name="apellidos" />
+    <input type="email" name="email" />
+    <input type="checkbox" name="terms" />
+    <textarea name="bot-field"></textarea>
+  </form>
+
   <main class="space-y-16">
     <!-- Primera Parte: Voces -->
     <section class="py-12 border-b-2 border-ee-brown-dark/5">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <!-- Izquierda: VOCES Entrevista -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Izquierda: Nota Central -->
         <div class="col-span-1">
-          <h2 class="font-dm-serif-display text-lg text-ee-terracotta uppercase tracking-[0.1em] mb-6 pb-3 border-b-4 border-ee-terracotta">
+          <h2 class="font-dm-serif-display text-lg text-ee-terracotta uppercase tracking-[0.1em] mb-6 pb-3 border-b-4 border-ee-terracotta inline-block">
             Voces
           </h2>
           {
-            featuredNews[0] && (
+            mainFeatured && (
               <ArticleCard
                 article={{
-                  ...featuredNews[0].data,
-                  slug: featuredNews[0].slug,
+                  ...mainFeatured.data,
+                  slug: mainFeatured.slug,
                 }}
                 size="large"
               />
             )
           }
         </div>
-        <!-- Derecha: Categorías con texto -->
-        <div class="col-span-1 flex flex-col gap-4">
-          <a href="/categoria/bioconstruccion" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
-            <div class="w-24 h-20 shrink-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=200&h=150&fit=crop" alt="Bioconstrucción" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-grow">
-              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Bioconstrucción</h3>
-            </div>
-          </a>
-          <a href="/categoria/huerto-vivo" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
-            <div class="w-24 h-20 shrink-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=200&h=150&fit=crop" alt="Huerto Vivo" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-grow">
-              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Huerto Vivo</h3>
-            </div>
-          </a>
-          <a href="/categoria/nuevos-vinculos" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
-            <div class="w-24 h-20 shrink-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&h=150&fit=crop" alt="Nuevos Vínculos" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-grow">
-              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Nuevos Vínculos</h3>
-            </div>
-          </a>
-          <a href="/categoria/alimentacion-consciente" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
-            <div class="w-24 h-20 shrink-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=150&fit=crop" alt="Alimentación" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-grow">
-              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Alimentación</h3>
-            </div>
-          </a>
-          <a href="/categoria/gestacion" class="group flex gap-4 border-b border-ee-brown-dark/10 pb-4 cursor-pointer">
-            <div class="w-24 h-20 shrink-0 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&h=150&fit=crop" alt="Gestación" class="w-full h-full object-cover" />
-            </div>
-            <div class="flex-grow">
-              <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.1em]">Categoría</span>
-              <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-green-muted transition-colors leading-tight">Gestación</h3>
-            </div>
-          </a>
+        <!-- Derecha: Otras Notas (Fotos Chicas) -->
+        <div class="col-span-1 flex flex-col gap-6 md:mt-12">
+          {
+            sidebarNews.map((news) => (
+              <a href={`/news/${news.slug}`} class="group flex gap-4 border-b border-ee-brown-dark/5 pb-4 cursor-pointer last:border-0">
+                <div class="w-20 h-20 md:w-24 md:h-20 shrink-0 overflow-hidden rounded-sm">
+                  <img src={news.data.image} alt={news.data.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div class="flex-grow flex flex-col justify-center">
+                  <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.15em] mb-1">{news.data.category}</span>
+                  <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-terracotta transition-colors leading-tight font-medium">
+                    {news.data.title}
+                  </h3>
+                </div>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- Secciones Circulares con Textos -->
+    <!-- Segunda Parte: 3 Notas con recuadros más grandes -->
     <section class="py-12 border-b-2 border-ee-brown-dark/5">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Sociedad -->
-        <div class="flex flex-col items-center text-center gap-4">
-          <a href="/categoria/voces" class="group">
-            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
-              <img src="/sociedad-1.jpeg" alt="Sociedad" class="w-full h-full object-cover" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {
+          secondaryNews.map((news) => (
+            <div class="col-span-1">
+               <ArticleCard
+                article={{
+                  ...news.data,
+                  slug: news.slug,
+                }}
+                size="medium"
+              />
             </div>
-          </a>
-          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Sociedad en Transición</h3>
-          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed">
-            Un espacio para explorar las transformaciones sociales, culturales y económicas que dan forma a nuevas maneras de organizarnos. Una mirada periodística sobre los cambios de la sociedad contemporánea y los caminos hacia formas de vida más conscientes y colaborativas.
-          </p>
-        </div>
-        <!-- Permacultura -->
-        <div class="flex flex-col items-center text-center gap-4">
-          <a href="/categoria/bioconstruccion" class="group">
-            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
-              <img src="/permacultura-1.jpeg" alt="Permacultura" class="w-full h-full object-cover" />
-            </div>
-          </a>
-          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Permacultura</h3>
-          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed">
-            Un espacio dedicado a la permacultura y a las nuevas formas de habitar, donde la bioconstrucción, los huertos y el vínculo con la tierra se integran en una vida más sustentable.
-          </p>
-        </div>
-        <!-- Salud Integral -->
-        <div class="flex flex-col items-center text-center gap-4">
-          <a href="/categoria/alimentacion-consciente" class="group">
-            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
-              <img src="/salud-1.jpeg" alt="Salud Integral" class="w-full h-full object-cover" />
-            </div>
-          </a>
-          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Salud Integral</h3>
-          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed">
-            Una mirada integral sobre el bienestar y la salud que invita a explorar el equilibrio y la medicina natural como caminos posibles. Un espacio para compartir información, tendencias y herramientas vinculadas a la salud natural y la nutrición consciente.
-          </p>
-        </div>
-        <!-- Camino Interior -->
-        <div class="flex flex-col items-center text-center gap-4">
-          <a href="/categoria/tiempo-natural" class="group">
-            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto brightness-110">
-              <img src="/caminointerior-1.jpeg" alt="Camino Interior" class="w-full h-full object-cover" />
-            </div>
-          </a>
-          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Camino Interior</h3>
-          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed">
-            Un espacio donde la introspección y la consciencia abren nuevas formas de comprendernos. Aquí encontrarás miradas y recursos que acompañan procesos de transformación y reconexión con uno mismo.
-          </p>
-        </div>
+          ))
+        }
       </div>
     </section>
 
-    <!-- Terracotta Separator Strip -->
+    <!-- Tercera Parte: SUSCRIBITE GRATIS A NUESTRO NEWSLETTER -->
     <div
-      class="bg-ee-terracotta text-white py-12 px-8 -mx-4 sm:-mx-6 lg:-mx-8 text-center shadow-inner relative overflow-hidden"
+      class="bg-ee-terracotta text-white py-14 px-8 -mx-4 sm:-mx-6 lg:-mx-8 text-center shadow-inner relative overflow-hidden"
     >
       <div
         class="absolute inset-0 opacity-10 flex items-center justify-center select-none pointer-events-none"
@@ -172,37 +118,143 @@ const latestMagazines = allMagazines
         <span class="font-playfair text-9xl italic">Vida Consciente</span>
       </div>
       <div class="relative z-10 max-w-4xl mx-auto">
-        <h3
-          class="font-dm-serif-display text-2xl md:text-3xl uppercase tracking-[0.3em] mb-4"
+        <h2
+          class="font-dm-serif-display text-4xl md:text-5xl uppercase tracking-[0.2em] mb-4"
         >
-          Membresía Digital
-        </h3>
+          Suscripción Gratuita
+        </h2>
         <p
-          class="font-dm-serif text-xl italic text-white/80 mb-8 max-w-lg mx-auto"
+          class="font-dm-serif text-xl italic text-white/90 mb-10 max-w-lg mx-auto"
         >
-          Únete para acceder a ediciones exclusivas y contenido de archivo.
+          Únete gratis a nuestra comunidad y recibe en tu correo una selección de nuestro contenido.
         </p>
-        <a
-          href="#subscribe"
-          class="inline-block border-2 border-white px-10 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-white hover:text-ee-terracotta transition-all shadow-lg scroll-smooth"
-          >Suscribirme hoy</a
+        <button
+          onclick="window.dispatchEvent(new CustomEvent('open-newsletter-modal'))"
+          class="inline-block border-2 border-white px-12 py-4 font-dm-serif-display text-lg tracking-[0.25em] uppercase hover:bg-white hover:text-ee-terracotta transition-all shadow-xl cursor-pointer"
+          >Suscribirme hoy</button
         >
       </div>
     </div>
 
-    <!-- Banner de Anuncio -->
-    <div
-      class="w-full bg-ee-brown-dark h-32 flex items-center justify-center opacity-10 group cursor-pointer relative overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 flex items-center justify-center group-hover:bg-ee-terracotta/10 transition-colors"
-      >
-        <span
-          class="font-dm-serif text-3xl italic tracking-widest opacity-30 select-none"
-          >ESPACIO PUBLICITARIO</span
-        >
+    <!-- Secciones Circulares con Textos (Moved lower) -->
+    <section class="py-12 border-b-2 border-ee-brown-dark/5">
+      <SectionHeader title="Explora por Categoría" color="brown" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mt-12">
+        <!-- Sociedad -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/sociedad" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
+              <img src="/sociedad-1.jpeg" alt="Sociedad" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Sociedad en Transición</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Un espacio para explorar las transformaciones sociales, culturales y económicas que impulsan nuevas maneras de vida más conscientes y colaborativas.
+          </p>
+        </div>
+        <!-- Permacultura -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/permacultura" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
+              <img src="/permacultura-1.jpeg" alt="Permacultura" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Permacultura</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Un recorrido por la permacultura y las nuevas formas de habitar, donde la bioconstrucción, los huertos y el vínculo con la tierra se integran en una vida más sustentable.
+          </p>
+        </div>
+        <!-- Salud Integral -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/salud-integral" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
+              <img src="/salud-1.jpeg" alt="Salud Integral" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Salud Integral</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Una mirada integral sobre el bienestar y la salud que invita a explorar el equilibrio y la medicina natural como caminos posibles hacia la salud natural y la nutrición consciente.
+          </p>
+        </div>
+        <!-- Camino Interior -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/camino-interior" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto brightness-110">
+              <img src="/caminointerior-1.jpeg" alt="Camino Interior" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Camino Interior</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Un lugar donde compartir miradas y recursos que acompañan procesos de transformación y reconexión con uno mismo.
+          </p>
+        </div>
+        <!-- Gestación y Crianza -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/gestacion" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
+              <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&h=400&fit=crop" alt="Gestación y Crianza" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Gestación y Crianza</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Un ámbito para acompañar los procesos de gestación, nacimiento y crianza desde una presencia consciente y amorosa.
+          </p>
+        </div>
+        <!-- Arte y Cultura -->
+        <div class="flex flex-col items-center text-center gap-4">
+          <a href="/categoria/cultura" class="group">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
+              <img src="/proyectos-1.jpeg" alt="Arte y Cultura" class="w-full h-full object-cover" />
+            </div>
+          </a>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Arte y Cultura</h3>
+          <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
+            Una invitación a conectar con propuestas que inspiran, transforman y reflejan una nueva sensibilidad en el arte y la cultura.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Advertising / Quote Section -->
+    <section class="py-16 -mx-4 sm:-mx-6 lg:-mx-8 bg-ee-sand/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden shadow-2xl rounded-sm border border-ee-brown-dark/5">
+          <!-- Left: Image with Quote -->
+          <div class="relative h-80 md:h-96 group">
+            <img 
+              src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1000&q=80" 
+              alt="Inspiration" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-ee-brown-dark/40 flex items-center justify-center p-12 text-center">
+              <p class="font-playfair text-2xl md:text-3xl text-white italic leading-relaxed">
+                "El futuro pertenece a quienes creen en la belleza de sus sueños y actúan con consciencia."
+              </p>
+            </div>
+          </div>
+          
+          <!-- Right: Advertising Invitation -->
+          <div class="bg-white p-12 md:p-16 flex flex-col justify-center border-l border-ee-brown-dark/5">
+            <span class="font-dm-serif-display text-xs text-ee-terracotta uppercase tracking-[0.3em] mb-4">Anúnciate con nosotros</span>
+            <h3 class="font-playfair text-3xl md:text-4xl text-ee-brown-dark mb-6 leading-tight">
+              Lleva tu marca a una audiencia <span class="italic text-ee-terracotta">consciente</span>
+            </h3>
+            <p class="font-dm-serif text-ee-gray-dark/80 text-lg mb-8 leading-relaxed">
+              En Entre Eras, conectamos marcas con propósito con una comunidad que valora la sustentabilidad, el bienestar y el arte.
+            </p>
+            <div>
+              <a 
+                href="https://wa.me/549113548618809" 
+                target="_blank"
+                class="inline-block border-2 border-ee-brown-dark px-8 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-ee-brown-dark hover:text-white transition-all shadow-md"
+              >
+                Contáctanos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Revista Archive Grid Preview -->
     <section>

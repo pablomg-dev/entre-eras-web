@@ -11,7 +11,7 @@ interface ProjectArticle {
 
 interface Props {
 	article: ProjectArticle;
-	size?: 'large' | 'small' | 'list';
+	size?: 'large' | 'medium' | 'small' | 'list';
 }
 
 const { article, size = 'small' } = Astro.props;
@@ -19,7 +19,7 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 ---
 
 {size === 'large' ? (
-	<a href={articleUrl} class="block flex flex-col gap-6 mb-12 group cursor-pointer">
+	<a href={articleUrl} class="block flex flex-col gap-6 mb-12 group cursor-pointer text-left">
 		<div class="overflow-hidden aspect-[16/9] shadow-lg border border-ee-brown-dark/10">
 			<img 
 				src={article.image} 
@@ -36,6 +36,28 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 				{article.description}
 			</p>
 			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+		</div>
+	</a>
+) : size === 'medium' ? (
+	<a href={articleUrl} class="block flex flex-col gap-5 group cursor-pointer text-left h-full">
+		<div class="overflow-hidden aspect-[4/3] shadow-md border border-ee-brown-dark/10 shrink-0">
+			<img 
+				src={article.image} 
+				alt={article.title} 
+				class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+			/>
+		</div>
+		<div class="flex flex-col gap-3 flex-grow">
+			<span class="font-dm-serif-display text-[10px] md:text-xs text-ee-terracotta uppercase tracking-[0.1em]">{article.category}</span>
+			<h3 class="font-playfair text-xl md:text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-terracotta transition-colors">
+				{article.title}
+			</h3>
+			<p class="font-dm-serif text-sm text-ee-cyan-muted italic line-clamp-3">
+				{article.description}
+			</p>
+			<div class="mt-auto">
+				<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			</div>
 		</div>
 	</a>
 ) : size === 'small' ? (
