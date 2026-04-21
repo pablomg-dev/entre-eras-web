@@ -46,19 +46,20 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Header -->
 			<header class="py-6 md:py-12 border-b-2 border-ee-brown-dark/10 mb-8 relative">
-				<div class="flex md:flex-col items-center md:items-center justify-between md:justify-center gap-4 md:gap-6">
+				<!-- Logo and Mobile Toggle Header Area -->
+				<div class="relative flex items-center justify-center">
 					<!-- Logo and Tagline Group -->
-					<div class="flex flex-col items-start md:items-center text-left md:text-center">
-						<a href="/" class="block mb-1 md:mb-4">
+					<div class="flex flex-col items-center text-center">
+						<a href="/" class="block mb-1">
 							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-16 md:h-48 w-auto object-contain hover:scale-105 transition-transform duration-500" />
 						</a>
-						<div class="flex flex-col items-start md:items-center gap-1">
-							<p class="font-brand-poppins text-[9px] md:text-[11px] text-ee-terracotta uppercase tracking-[0.15em] font-semibold">Hacia una vida consciente</p>
+						<div class="flex flex-col items-center gap-1">
+							<p class="font-brand-poppins text-[10px] md:text-[11px] text-ee-terracotta uppercase tracking-[0.15em] font-semibold">Hacia una vida consciente</p>
 						</div>
 					</div>
 
 					<!-- Mobile Menu Toggle -->
-					<button id="mobile-menu-toggle" class="md:hidden p-2 text-ee-brown-dark hover:text-ee-terracotta transition-colors" aria-label="Abrir menú">
+					<button id="mobile-menu-toggle" class="absolute right-0 top-1/2 -translate-y-1/2 md:hidden p-2 text-ee-brown-dark hover:text-ee-terracotta transition-colors" aria-label="Abrir menú">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
 					</button>
@@ -124,68 +125,68 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				</nav>
 
 				<!-- Mobile Navigation Drawer -->
-				<nav id="mobile-menu" class="md:hidden hidden overflow-hidden transition-all duration-300 border-t border-ee-brown-dark/5 mt-6">
-					<ul class="flex flex-col py-4 font-poppins text-base text-ee-brown-dark tracking-wider font-medium space-y-1">
-						<li>
+				<nav id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-white z-[100] border-t border-ee-brown-dark/5 shadow-2xl opacity-0 invisible -translate-y-4 transition-all duration-500 ease-out">
+					<ul class="flex flex-col py-6 px-6 font-poppins text-lg text-ee-brown-dark tracking-wider font-semibold space-y-1">
+						<li class="border-b border-ee-brown-dark/5">
 							<div class="mobile-dropdown-parent">
-								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">
+								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-4 hover:text-ee-terracotta transition-colors">
 									Sociedad
-									<svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
-								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10">
-									<a href="/categoria/voces" class="py-3 px-2 text-sm">Voces</a>
-									<a href="/categoria/comunidad" class="py-3 px-2 text-sm">Comunidad</a>
-									<a href="/categoria/educacion" class="py-3 px-2 text-sm">Educación</a>
-									<a href="/categoria/economia" class="py-3 px-2 text-sm">Economía</a>
+								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
+									<a href="/categoria/voces" class="py-3 text-base">Voces</a>
+									<a href="/categoria/comunidad" class="py-3 text-base">Comunidad</a>
+									<a href="/categoria/educacion" class="py-3 text-base">Educación</a>
+									<a href="/categoria/economia" class="py-3 text-base">Economía</a>
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="border-b border-ee-brown-dark/5">
 							<div class="mobile-dropdown-parent">
-								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">
+								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-4 hover:text-ee-terracotta transition-colors">
 									Permacultura
-									<svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
-								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10">
-									<a href="/categoria/bioconstruccion" class="py-3 px-2 text-sm">Bioconstrucción</a>
-									<a href="/categoria/huerto-activo" class="py-3 px-2 text-sm">Huerto Activo</a>
+								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
+									<a href="/categoria/bioconstruccion" class="py-3 text-base">Bioconstrucción</a>
+									<a href="/categoria/huerto-activo" class="py-3 text-base">Huerto Activo</a>
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="border-b border-ee-brown-dark/5">
 							<div class="mobile-dropdown-parent">
-								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">
+								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-4 hover:text-ee-terracotta transition-colors">
 									Salud Integral
-									<svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
-								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10">
-									<a href="/categoria/alimentacion" class="py-3 px-2 text-sm">Alimentación</a>
-									<a href="/categoria/medicina-natural" class="py-3 px-2 text-sm">Medicina Natural</a>
+								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
+									<a href="/categoria/alimentacion" class="py-3 text-base">Alimentación</a>
+									<a href="/categoria/medicina-natural" class="py-3 text-base">Medicina Natural</a>
 								</div>
 							</div>
 						</li>
-						<li>
+						<li class="border-b border-ee-brown-dark/5">
 							<div class="mobile-dropdown-parent">
-								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">
+								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-4 hover:text-ee-terracotta transition-colors">
 									Camino Interior
-									<svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
-								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10">
-									<a href="/categoria/nuevos-vinculos" class="py-3 px-2 text-sm">Nuevos Vínculos</a>
-									<a href="/categoria/tiempo-natural" class="py-3 px-2 text-sm">Tiempo Natural</a>
-									<a href="/categoria/astrologia-hoy" class="py-3 px-2 text-sm">Astrología Hoy</a>
-									<a href="/categoria/recursos-terapeuticos" class="py-3 px-2 text-sm">Recursos Terapéuticos</a>
+								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
+									<a href="/categoria/nuevos-vinculos" class="py-3 text-base">Nuevos Vínculos</a>
+									<a href="/categoria/tiempo-natural" class="py-3 text-base">Tiempo Natural</a>
+									<a href="/categoria/astrologia-hoy" class="py-3 text-base">Astrología Hoy</a>
+									<a href="/categoria/recursos-terapeuticos" class="py-3 text-base">Recursos Terapéuticos</a>
 								</div>
 							</div>
 						</li>
-						<li>
-							<a href="/categoria/gestacion" class="block py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">Gestación</a>
+						<li class="border-b border-ee-brown-dark/5">
+							<a href="/categoria/gestacion" class="block py-4 hover:text-ee-terracotta transition-colors">Gestación</a>
+						</li>
+						<li class="border-b border-ee-brown-dark/5">
+							<a href="/categoria/cultura" class="block py-4 hover:text-ee-terracotta transition-colors">Cultura</a>
 						</li>
 						<li>
-							<a href="/categoria/cultura" class="block py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">Cultura</a>
-						</li>
-						<li>
-							<a href="/#subscribe" class="block py-3 px-2 hover:bg-ee-terracotta/5 hover:text-ee-terracotta transition-colors">Quiénes somos</a>
+							<a href="/#subscribe" class="block py-4 hover:text-ee-terracotta transition-colors">Quiénes somos</a>
 						</li>
 					</ul>
 				</nav>
@@ -275,13 +276,15 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 
 	if (mobileMenuToggle && mobileMenu) {
 		mobileMenuToggle.addEventListener('click', function() {
-			const isHidden = mobileMenu.classList.contains('hidden');
-			if (isHidden) {
-				mobileMenu.classList.remove('hidden');
+			const isOpen = mobileMenu.classList.contains('visible');
+			if (!isOpen) {
+				mobileMenu.classList.remove('opacity-0', 'invisible', '-translate-y-4');
+				mobileMenu.classList.add('opacity-100', 'visible', 'translate-y-0');
 				menuIcon.classList.add('hidden');
 				closeIcon.classList.remove('hidden');
 			} else {
-				mobileMenu.classList.add('hidden');
+				mobileMenu.classList.add('opacity-0', 'invisible', '-translate-y-4');
+				mobileMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
 				menuIcon.classList.remove('hidden');
 				closeIcon.classList.add('hidden');
 			}
