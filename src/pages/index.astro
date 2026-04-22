@@ -1,9 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
-import SectionFeatured from "../components/SectionFeatured.astro";
 import ArticleCard from "../components/ArticleCard.astro";
-import MagazineCover from "../components/MagazineCover.astro";
 import SubscriptionForm from "../components/SubscriptionForm";
 import NewsletterModal from "../components/NewsletterModal";
 import { getCollection } from "astro:content";
@@ -15,24 +13,6 @@ const recentNews = allNews.sort(
 const mainFeatured = recentNews[0];
 const sidebarNews = recentNews.slice(1, 5);
 const secondaryNews = recentNews.slice(5, 8);
-
-const healthNews = recentNews
-  .filter((n) => n.data.category === "SALUD INTEGRAL")
-  .slice(0, 4);
-const societyNews = recentNews
-  .filter((n) => n.data.category === "SOCIEDAD EN TRANSICIÓN")
-  .slice(0, 4);
-const interiorNews = recentNews
-  .filter((n) => n.data.category === "CAMINO INTERIOR")
-  .slice(0, 4);
-const huertNews = recentNews
-  .filter((n) => n.data.category === "HUERTO ACTIVO")
-  .slice(0, 4);
-
-const allMagazines = await getCollection("magazines");
-const latestMagazines = allMagazines
-  .sort((a, b) => b.data.editionDate.getTime() - a.data.editionDate.getTime())
-  .slice(0, 4);
 ---
 
 <Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
@@ -47,9 +27,9 @@ const latestMagazines = allMagazines
     <textarea name="bot-field"></textarea>
   </form>
 
-  <main class="space-y-16">
+  <main class="space-y-12">
     <!-- Primera Parte: Voces -->
-    <section class="py-12 border-b-2 border-ee-brown-dark/5">
+    <section class="pb-12 pt-4 border-b-2 border-ee-brown-dark/5">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Izquierda: Nota Central -->
         <div class="col-span-1">
@@ -119,12 +99,12 @@ const latestMagazines = allMagazines
       </div>
       <div class="relative z-10 max-w-4xl mx-auto">
         <h2
-          class="font-dm-serif-display text-4xl md:text-5xl uppercase tracking-[0.2em] mb-4"
+          class="font-dm-serif-display text-2xl md:text-3xl uppercase tracking-[0.2em] mb-4"
         >
           Suscripción Gratuita
         </h2>
         <p
-          class="font-dm-serif text-xl italic text-white/90 mb-10 max-w-lg mx-auto"
+          class="font-dm-serif text-lg italic text-white/90 mb-10 max-w-lg mx-auto"
         >
           Únete gratis a nuestra comunidad y recibe en tu correo una selección de nuestro contenido.
         </p>
@@ -200,14 +180,14 @@ const latestMagazines = allMagazines
             Un ámbito para acompañar los procesos de gestación, nacimiento y crianza desde una presencia consciente y amorosa.
           </p>
         </div>
-        <!-- Arte y Cultura -->
+        <!-- Cultura Viva -->
         <div class="flex flex-col items-center text-center gap-4">
           <a href="/categoria/cultura" class="group">
             <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-ee-brown-dark/20 shadow-lg mx-auto">
-              <img src="/proyectos-1.jpeg" alt="Arte y Cultura" class="w-full h-full object-cover" />
+              <img src="/proyectos-1.jpeg" alt="Cultura Viva" class="w-full h-full object-cover" />
             </div>
           </a>
-          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Arte y Cultura</h3>
+          <h3 class="font-dm-serif-display text-lg text-ee-brown-dark uppercase tracking-wider">Cultura Viva</h3>
           <p class="font-dm-serif text-sm text-ee-gray-dark/80 italic leading-relaxed px-4">
             Una invitación a conectar con propuestas que inspiran, transforman y reflejan una nueva sensibilidad en el arte y la cultura.
           </p>
@@ -246,7 +226,7 @@ const latestMagazines = allMagazines
               <a 
                 href="https://wa.me/549113548618809" 
                 target="_blank"
-                class="inline-block border-2 border-ee-brown-dark px-8 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-ee-brown-dark hover:text-white transition-all shadow-md"
+                class="inline-block border-2 border-ee-brown-dark px-8 py-3 font-dm-serif-display text-sm tracking-widest uppercase hover:bg-ee-terracotta hover:border-ee-terracotta hover:text-white transition-all shadow-md"
               >
                 Contáctanos
               </a>
@@ -256,43 +236,7 @@ const latestMagazines = allMagazines
       </div>
     </section>
 
-    <!-- Revista Archive Grid Preview -->
-    <section>
-      <SectionHeader title="Últimas Revistas" color="terracotta" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-        {latestMagazines.map((mag) => <MagazineCover magazine={mag.data} />)}
-        {
-          latestMagazines.length === 0 && (
-            <div class="col-span-full py-20 text-center bg-ee-sand/10 border-ee-tile opacity-30">
-              Cargando ediciones digitales...
-            </div>
-          )
-        }
-      </div>
-      <div class="text-center mt-12">
-        <a
-          href="/revista"
-          class="inline-block border-b-4 border-ee-terracotta/20 text-ee-terracotta font-dm-serif-display text-2xl uppercase tracking-[0.2em] px-8 py-2 hover:border-ee-terracotta hover:scale-110 transition-all duration-300"
-          >Explorar Archivo Completo</a
-        >
-      </div>
-    </section>
 
-    <!-- Sociedad section -->
-    <SectionFeatured
-      sectionTitle="Sociedad en Transición"
-      color="brown"
-      featured={societyNews[0] ? { ...societyNews[0].data, slug: societyNews[0].slug } : null}
-      articles={societyNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
-    />
-
-    <!-- Camino Interior section -->
-    <SectionFeatured
-      sectionTitle="Camino Interior"
-      color="green"
-      featured={interiorNews[0] ? { ...interiorNews[0].data, slug: interiorNews[0].slug } : null}
-      articles={interiorNews.slice(0, 3).map((a) => ({ ...a.data, slug: a.slug }))}
-    />
 
     <!-- Subscription Call to Action -->
     <div id="subscribe" class="scroll-mt-24 pb-20">

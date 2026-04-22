@@ -25,20 +25,23 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 		<!-- Top Terracotta Strip -->
 		<div class="bg-ee-terracotta text-white py-2 shadow-sm">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-				<a href="/#subscribe" class="font-poppins text-[10px] md:text-xs uppercase tracking-[0.2em] hover:opacity-75 transition-opacity">Suscripción</a>
+				<!-- Search Bar instead of Subscription -->
+				<div class="relative group max-w-[150px] md:max-w-[200px]">
+					<input 
+						id="search-input"
+						type="text" 
+						placeholder="buscar" 
+						class="w-full bg-white/10 border border-white/20 px-3 py-1 font-poppins text-[10px] md:text-xs italic text-white placeholder:text-white/60 focus:outline-none focus:bg-white/20 transition-all rounded-sm"
+					/>
+					<button id="search-button" class="absolute right-2 top-1/2 -translate-y-1/2 text-white/60 group-focus-within:text-white transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+					</button>
+				</div>
 				<div class="flex gap-4 items-center">
 					<a href="https://wa.me/549113548618809" target="_blank" rel="noopener noreferrer" class="font-poppins text-[10px] md:text-xs uppercase tracking-[0.2em] hover:opacity-75 transition-opacity" aria-label="WhatsApp">
 						Contacto
 					</a>
-					<a href="https://www.instagram.com/entreeras.ok/?hl=es-la" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition-opacity" aria-label="Instagram">
-						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-					</a>
-					<a href="https://www.facebook.com/profile.php?id=61580788067697" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition-opacity" aria-label="Facebook">
-						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-					</a>
-					<a href="mailto:revista.entreeras@gmail.com" class="hover:opacity-75 transition-opacity" aria-label="Email">
-						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-					</a>
+
 				</div>
 			</div>
 		</div>
@@ -50,12 +53,9 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				<div class="relative flex items-center justify-center">
 					<!-- Logo and Tagline Group -->
 					<div class="flex flex-col items-center text-center">
-						<a href="/" class="block mb-1">
-							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-16 md:h-48 w-auto object-contain hover:scale-105 transition-transform duration-500" />
+						<a href="/" class="block">
+							<img src="/logo.jpeg" alt="EE Estilo Editorial Logo" class="h-14 md:h-36 w-auto object-contain hover:scale-105 transition-transform duration-500" />
 						</a>
-						<div class="flex flex-col items-center gap-1">
-							<p class="font-brand-poppins text-[10px] md:text-[11px] text-ee-terracotta uppercase tracking-[0.15em] font-semibold">Hacia una vida consciente</p>
-						</div>
 					</div>
 
 					<!-- Mobile Menu Toggle -->
@@ -67,10 +67,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				
 				<!-- Desktop Navigation -->
 				<nav class="mt-8 md:mt-12 hidden md:block">
-					<ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-poppins text-sm md:text-base text-ee-brown-dark tracking-wider font-medium">
+					<ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-poppins text-xs md:text-sm text-ee-brown-dark tracking-wider font-medium">
 						<li class="relative group">
 							<button class="dropdown-toggle flex items-center gap-1 hover:text-ee-terracotta transition-colors cursor-pointer">
-								Sociedad
+								Sociedad en Transición
 								<svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 							</button>
 							<div class="dropdown-menu absolute top-full left-0 mt-1 bg-white shadow-lg border border-ee-brown-dark/10 rounded-sm py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 hidden md:block md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible">
@@ -113,10 +113,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 							</div>
 						</li>
 						<li>
-							<a href="/categoria/gestacion" class="hover:text-ee-terracotta transition-colors">Gestación</a>
+							<a href="/categoria/gestacion" class="hover:text-ee-terracotta transition-colors">Gestación y Crianza</a>
 						</li>
 						<li>
-							<a href="/categoria/cultura" class="hover:text-ee-terracotta transition-colors">Cultura</a>
+							<a href="/categoria/cultura" class="hover:text-ee-terracotta transition-colors">Cultura Viva</a>
 						</li>
 						<li>
 							<a href="/#subscribe" class="hover:text-ee-terracotta transition-colors">Quiénes somos</a>
@@ -127,10 +127,24 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				<!-- Mobile Navigation Drawer -->
 				<nav id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-white z-[100] border-t border-ee-brown-dark/5 shadow-2xl opacity-0 invisible -translate-y-4 transition-all duration-500 ease-out">
 					<ul class="flex flex-col py-6 px-6 font-poppins text-lg text-ee-brown-dark tracking-wider font-semibold space-y-1">
+						<!-- Mobile Search Bar -->
+						<li class="pb-4">
+							<div class="relative group">
+								<input 
+									id="mobile-search-input"
+									type="text" 
+									placeholder="buscar" 
+									class="w-full bg-ee-sand/10 border border-ee-brown-dark/5 px-4 py-3 font-poppins text-sm italic focus:outline-none focus:border-ee-terracotta/30 transition-colors rounded-sm"
+								/>
+								<button id="mobile-search-button" class="absolute right-3 top-1/2 -translate-y-1/2 text-ee-brown-dark/30 group-focus-within:text-ee-terracotta transition-colors">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+								</button>
+							</div>
+						</li>
 						<li class="border-b border-ee-brown-dark/5">
 							<div class="mobile-dropdown-parent">
 								<button class="mobile-dropdown-toggle w-full flex justify-between items-center py-4 hover:text-ee-terracotta transition-colors">
-									Sociedad
+									Sociedad en Transición
 									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
 								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
@@ -180,10 +194,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 							</div>
 						</li>
 						<li class="border-b border-ee-brown-dark/5">
-							<a href="/categoria/gestacion" class="block py-4 hover:text-ee-terracotta transition-colors">Gestación</a>
+							<a href="/categoria/gestacion" class="block py-4 hover:text-ee-terracotta transition-colors">Gestación y Crianza</a>
 						</li>
 						<li class="border-b border-ee-brown-dark/5">
-							<a href="/categoria/cultura" class="block py-4 hover:text-ee-terracotta transition-colors">Cultura</a>
+							<a href="/categoria/cultura" class="block py-4 hover:text-ee-terracotta transition-colors">Cultura Viva</a>
 						</li>
 						<li>
 							<a href="/#subscribe" class="block py-4 hover:text-ee-terracotta transition-colors">Quiénes somos</a>
@@ -200,19 +214,9 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 					<div class="col-span-1 lg:col-span-2">
 						<img src="/logo.jpeg" alt="EE Logo" class="h-16 w-auto mb-6 grayscale opacity-80" />
 						<p class="font-poppins text-ee-body leading-relaxed max-w-sm mb-6">
-							Una plataforma editorial del nuevo paradigma, donde bienestar, cultura y sociedad se unen para inspirar una forma más consciente de habitar el mundo.
+							Una plataforma editorial del nuevo paradigma, donde bienestar, cultura viva y sociedad en transición se unen para inspirar una forma más consciente de habitar el mundo.
 						</p>
-						<div class="flex gap-5 text-ee-gray-dark/50">
-							<a href="https://www.instagram.com/entreeras.ok/?hl=es-la" target="_blank" rel="noopener noreferrer" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-							</a>
-							<a href="https://www.facebook.com/profile.php?id=61580788067697" target="_blank" rel="noopener noreferrer" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-							</a>
-							<a href="mailto:revista.entreeras@gmail.com" class="hover:text-ee-terracotta transition-all duration-300 transform hover:scale-110" aria-label="Email">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-							</a>
-						</div>
+
 					</div>
 					<div>
 						<h3 class="font-dm-serif-display text-ee-section text-ee-brown-dark mb-4 uppercase">Lo más visto</h3>
@@ -238,20 +242,7 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 							</div>
 						</div>
 
-						<!-- Buscador -->
-						<div>
-							<h3 class="font-dm-serif-display text-ee-section text-ee-brown-dark mb-4 uppercase tracking-wider">Buscador</h3>
-							<div class="relative group max-w-[240px]">
-								<input 
-									type="text" 
-									placeholder="Buscar" 
-									class="w-full bg-white border border-ee-brown-dark/10 px-4 py-2 font-poppins text-sm italic focus:outline-none focus:border-ee-terracotta/50 transition-colors shadow-inner"
-								/>
-								<button class="absolute right-3 top-1/2 -translate-y-1/2 text-ee-brown-dark/30 group-focus-within:text-ee-terracotta transition-colors">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-								</button>
-							</div>
-						</div>
+
 					</div>
 				</div>
 				<div class="text-center border-t border-ee-brown-dark/10 pt-8 mt-8">
@@ -339,6 +330,29 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 			});
 		}
 	});
+
+	// Search Logic
+	function setupSearch(inputId, buttonId) {
+		const input = document.getElementById(inputId);
+		const button = document.getElementById(buttonId);
+
+		if (input && button) {
+			function performSearch() {
+				const query = input.value.trim();
+				if (query) {
+					window.location.href = `/buscar?q=${encodeURIComponent(query)}`;
+				}
+			}
+
+			input.addEventListener('keypress', (e) => {
+				if (e.key === 'Enter') performSearch();
+			});
+			button.addEventListener('click', performSearch);
+		}
+	}
+
+	setupSearch('search-input', 'search-button');
+	setupSearch('mobile-search-input', 'mobile-search-button');
 </script>
 
 <style is:global>

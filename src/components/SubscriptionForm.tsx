@@ -68,7 +68,7 @@ const SubscriptionForm: React.FC = () => {
                     </div>
                     <button 
                         disabled={status === 'loading' || status === 'success'}
-                        className={`bg-ee-brown-dark text-white px-8 py-3 md:py-4 font-dm-serif-display text-sm md:text-base uppercase tracking-[0.2em] transform transition-all hover:scale-[1.02] shadow-xl ${status === 'loading' ? 'opacity-50' : status === 'success' ? 'bg-green-700' : ''}`}
+                        className={`bg-ee-terracotta text-white px-8 py-3 md:py-4 font-dm-serif-display text-sm md:text-base uppercase tracking-[0.2em] transform transition-all hover:scale-[1.02] shadow-xl ${status === 'loading' ? 'opacity-50' : status === 'success' ? 'bg-green-700' : ''}`}
                     >
                         {status === 'loading' ? 'Procesando...' : status === 'success' ? '¡Suscrito!' : 'Unirme Gratis'}
                     </button>

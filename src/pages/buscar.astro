@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const { searchParams } = Astro.url;
+const query = searchParams.get("q") || "";
+
+const allNews = await getCollection("news");
+
+const filteredNews = allNews.filter((news) => {
+  const searchStr = `${news.data.title} ${news.data.description} ${news.data.category}`.toLowerCase();
+  return searchStr.includes(query.toLowerCase());
+});
+---
+
+<Layout title={`Resultados para: ${query} - Entre Eras`}>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 min-h-[60vh]">
+    <div class="mb-12 border-b-2 border-ee-terracotta/10 pb-8">
+      <h1 class="font-dm-serif-display text-3xl md:text-5xl text-ee-brown-dark mb-4">
+        Resultados de búsqueda
+      </h1>
+      <p class="font-dm-serif text-lg italic text-ee-gray-dark/60">
+        {query ? `Mostrando resultados para "${query}"` : "Por favor, ingresa un término de búsqueda."}
+      </p>
+    </div>
+
+    {filteredNews.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {filteredNews.map((news) => (
+          <ArticleCard
+            article={{
+              ...news.data,
+              slug: news.slug,
+            }}
+            size="medium"
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="py-20 text-center">
+        <div class="mb-6 opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <p class="font-dm-serif text-2xl text-ee-brown-dark/40 italic">
+          No encontramos artículos que coincidan con tu búsqueda.
+        </p>
+        <a href="/" class="inline-block mt-8 text-ee-terracotta border-b-2 border-ee-terracotta/20 hover:border-ee-terracotta transition-all font-dm-serif-display uppercase tracking-widest text-sm pb-1">
+          Volver al inicio
+        </a>
+      </div>
+    )}
+  </main>
+</Layout>
