@@ -49,8 +49,24 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Header -->
 			<header class="py-6 md:py-12 border-b-2 border-ee-brown-dark/10 mb-8 relative">
+				<!-- Video Background -->
+				<div class="absolute inset-0 z-0 overflow-hidden">
+					<video 
+						autoplay 
+						loop 
+						muted 
+						playsinline 
+						class="w-full h-full object-cover opacity-50 filter grayscale-[10%] transition-opacity duration-1000"
+					>
+						<source src="/video-menu-hero.webm" type="video/webm">
+						<source src="/video-menu-hero.mp4" type="video/mp4">
+					</video>
+					<!-- Lighter Overlay for better video visibility -->
+					<div class="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20 shadow-inner"></div>
+				</div>
+
 				<!-- Logo and Mobile Toggle Header Area -->
-				<div class="relative flex items-center justify-center">
+				<div class="relative z-10 flex items-center justify-center">
 					<!-- Logo and Tagline Group -->
 					<div class="flex flex-col items-center text-center">
 						<a href="/" class="block">
@@ -66,7 +82,7 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 				</div>
 				
 				<!-- Desktop Navigation -->
-				<nav class="mt-8 md:mt-12 hidden md:block">
+				<nav class="mt-8 md:mt-12 hidden md:block relative z-10">
 					<ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-poppins text-xs md:text-sm text-ee-brown-dark tracking-wider font-medium">
 						<li>
 							<a href="/" class="hover:text-ee-terracotta transition-colors">Inicio</a>
@@ -129,7 +145,7 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 
 				<!-- Mobile Navigation Drawer -->
 				<nav id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-white z-[100] border-t border-ee-brown-dark/5 shadow-2xl opacity-0 invisible -translate-y-4 transition-all duration-500 ease-out">
-					<ul class="flex flex-col py-6 px-6 font-poppins text-lg text-ee-brown-dark tracking-wider font-semibold space-y-1">
+					<ul class="flex flex-col py-6 px-6 font-poppins text-base text-ee-brown-dark tracking-wider font-medium space-y-1">
 						<!-- Mobile Search Bar -->
 						<li class="pb-4">
 							<div class="relative group">
@@ -154,10 +170,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
 								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
-									<a href="/categoria/voces" class="py-3 text-base">Voces</a>
-									<a href="/categoria/comunidad" class="py-3 text-base">Comunidad</a>
-									<a href="/categoria/educacion" class="py-3 text-base">Educación</a>
-									<a href="/categoria/economia" class="py-3 text-base">Economía</a>
+									<a href="/categoria/voces" class="py-3 text-sm">Voces</a>
+									<a href="/categoria/comunidad" class="py-3 text-sm">Comunidad</a>
+									<a href="/categoria/educacion" class="py-3 text-sm">Educación</a>
+									<a href="/categoria/economia" class="py-3 text-sm">Economía</a>
 								</div>
 							</div>
 						</li>
@@ -168,8 +184,8 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
 								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
-									<a href="/categoria/bioconstruccion" class="py-3 text-base">Bioconstrucción</a>
-									<a href="/categoria/huerto-activo" class="py-3 text-base">Huerto Activo</a>
+									<a href="/categoria/bioconstruccion" class="py-3 text-sm">Bioconstrucción</a>
+									<a href="/categoria/huerto-activo" class="py-3 text-sm">Huerto Activo</a>
 								</div>
 							</div>
 						</li>
@@ -180,8 +196,8 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
 								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
-									<a href="/categoria/alimentacion" class="py-3 text-base">Alimentación</a>
-									<a href="/categoria/medicina-natural" class="py-3 text-base">Medicina Natural</a>
+									<a href="/categoria/alimentacion" class="py-3 text-sm">Alimentación</a>
+									<a href="/categoria/medicina-natural" class="py-3 text-sm">Medicina Natural</a>
 								</div>
 							</div>
 						</li>
@@ -192,10 +208,10 @@ const { title, description = "EE - Estilo Editorial | Revista Digital y Periódi
 									<svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 								</button>
 								<div class="mobile-dropdown-menu hidden bg-stone-50/50 flex flex-col pl-4 border-l-2 border-ee-terracotta/10 overflow-hidden transition-all duration-300">
-									<a href="/categoria/nuevos-vinculos" class="py-3 text-base">Nuevos Vínculos</a>
-									<a href="/categoria/tiempo-natural" class="py-3 text-base">Tiempo Natural</a>
-									<a href="/categoria/astrologia-hoy" class="py-3 text-base">Astrología Hoy</a>
-									<a href="/categoria/recursos-terapeuticos" class="py-3 text-base">Recursos Terapéuticos</a>
+									<a href="/categoria/nuevos-vinculos" class="py-3 text-sm">Nuevos Vínculos</a>
+									<a href="/categoria/tiempo-natural" class="py-3 text-sm">Tiempo Natural</a>
+									<a href="/categoria/astrologia-hoy" class="py-3 text-sm">Astrología Hoy</a>
+									<a href="/categoria/recursos-terapeuticos" class="py-3 text-sm">Recursos Terapéuticos</a>
 								</div>
 							</div>
 						</li>
