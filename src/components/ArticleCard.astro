@@ -12,9 +12,10 @@ interface ProjectArticle {
 interface Props {
 	article: ProjectArticle;
 	size?: 'large' | 'medium' | 'small' | 'list';
+	showDate?: boolean;
 }
 
-const { article, size = 'small' } = Astro.props;
+const { article, size = 'small', showDate = true } = Astro.props;
 const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 ---
 
@@ -35,7 +36,9 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<p class="font-dm-serif text-sm md:text-base text-ee-cyan-muted italic">
 				{article.description}
 			</p>
-			<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			{showDate && (
+				<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			)}
 		</div>
 	</a>
 ) : size === 'medium' ? (
@@ -55,9 +58,11 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<p class="font-dm-serif text-sm text-ee-cyan-muted italic line-clamp-3">
 				{article.description}
 			</p>
-			<div class="mt-auto">
-				<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
-			</div>
+			{showDate && (
+				<div class="mt-auto">
+					<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+				</div>
+			)}
 		</div>
 	</a>
 ) : size === 'small' ? (
@@ -74,7 +79,9 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 			<h3 class="font-playfair text-xl md:text-2xl text-ee-brown-dark leading-snug group-hover:text-ee-green-muted transition-colors">
 				{article.title}
 			</h3>
-			<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			{showDate && (
+				<time class="font-poppins text-[10px] opacity-50 uppercase tracking-widest">{article.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+			)}
 		</div>
 	</a>
 ) : (
@@ -94,3 +101,4 @@ const articleUrl = article.slug ? `/news/${article.slug}` : '#';
 		</div>
 	</a>
 )}
+
