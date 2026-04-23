@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Quiénes Somos | EE Estilo Editorial" description="Conoce a María Cecilia Fernández y el equipo detrás de Entre Eras.">
+  <main class="max-w-4xl mx-auto py-16 px-4">
+    <!-- Header de la página -->
+    <div class="text-center mb-16">
+      <span class="font-dm-serif-display text-xs text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">Sobre Nosotros</span>
+      <h1 class="font-dm-serif-display text-4xl md:text-5xl text-ee-brown-dark mb-8">Quiénes somos</h1>
+      <div class="w-24 h-1 bg-ee-terracotta mx-auto"></div>
+    </div>
+
+    <!-- Texto Principal -->
+    <div class="space-y-10 font-dm-serif text-lg md:text-xl text-ee-gray-dark leading-relaxed italic text-center md:text-left">
+      <p>
+        Mi nombre es María Cecilia y soy quien impulsa este proyecto editorial, como el inicio de un camino para recorrer distintas miradas dentro de la sociedad.
+      </p>
+      <p>
+        Esta revista nació como una necesidad de comunicar en servicio y de acompañar a quienes se encuentran en una búsqueda profunda de cambios y de nuevas formas de transitar la vida.
+      </p>
+      <p>
+        Junto a un equipo de profesionales que aportan, desde sus recorridos y experiencias, una mirada sensible y comprometida, creemos en una comunicación que no solo informa, sino que también transforma, invitando a la reflexión, al cuestionamiento y a la reconexión con lo esencial.
+      </p>
+      <p>
+        Entre Eras es un tejido colectivo, donde cada voz aporta una perspectiva única al momento de transformación que estamos atravesando, integrando experiencias y enfoques que acompañan procesos de cambio tanto personales como colectivos.
+      </p>
+      <p>
+        Somos un espacio editorial que nace para acompañar la evolución de la conciencia, integrando nuevas formas de habitar el mundo.
+      </p>
+    </div>
+
+    <!-- Firma e Imagen Final -->
+    <div class="mt-24 border-t border-ee-brown-dark/10 pt-16">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-12">
+        <!-- Lado Izquierdo: Imagen, Nombre y Cargo -->
+        <div class="flex flex-col items-start">
+          <div class="w-48 h-56 md:w-56 md:h-64 overflow-hidden rounded-sm shadow-xl mb-6 border border-ee-brown-dark/5">
+            <img 
+              src="/quienes-somos.jpeg" 
+              alt="María Cecilia Fernández" 
+              class="w-full h-full object-cover" 
+            />
+          </div>
+          <div class="pl-2">
+            <p class="font-dm-serif-display text-2xl text-ee-brown-dark mb-1">María Cecilia Fernández</p>
+            <p class="font-sans-body text-[10px] text-ee-terracotta uppercase tracking-[0.2em] font-semibold">Directora General</p>
+          </div>
+        </div>
+
+        <!-- Lado Derecho: Agradecimiento -->
+        <div class="pb-4 md:pb-10 md:pr-8">
+          <p class="font-dm-serif text-2xl md:text-3xl italic text-ee-gray-dark text-right">
+            “Gracias por ser parte.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
