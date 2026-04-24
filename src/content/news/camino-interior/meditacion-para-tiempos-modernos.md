@@ -1,7 +1,8 @@
 ---
 title: "Meditación para Tiempos Modernos"
 description: "Descubre técnicas sencillas para integrar la calma en tu rutina diaria y encontrar el equilibrio en medio del caos urbano."
-category: "CAMINO INTERIOR"
+category: "Camino Interior"
+tags: ["Camino Interior", "Recursos Terapéuticos"]
 image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80"
 pubDate: 2024-03-25
 isFeatured: true

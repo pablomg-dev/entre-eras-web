@@ -2,12 +2,12 @@
 title: "De la ciudad a la naturaleza"
 description: "La humanidad está vivenciando muchos cambios que invitan a generar movimientos, tanto internos como externos. Ya nada es como lo conocíamos."
 pubDate: 2026-04-24
-category: "SOCIEDAD EN TRANSICIÓN"
+category: "Sociedad en Transición"
 image: "/ciudad-a-naturaleza/ciudad-a-naturaleza.jpg"
 isFeatured: true
 author: "MARÍA CECILIA FERNANDEZ"
 authorSocial: "@CECIFER.OK"
-tags: ["Voces"]
+tags: ["Sociedad en Transición", "Voces"]
 ---
 
 La humanidad está vivenciando muchos cambios. Cambios que invitan a generar movimientos, tanto internos como externos. Ya nada es como lo conocíamos. La Tierra está elevando su frecuencia y el mundo está en crisis. Pero ya sabemos: crisis = oportunidad.

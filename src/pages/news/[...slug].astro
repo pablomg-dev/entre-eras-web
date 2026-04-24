@@ -26,11 +26,12 @@ const previousNews = allNews
 			<h1 class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm">{entry.data.title}</h1>
 
 			<div class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60">
-				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span>{entry.data.authorSocial && (
+				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span></span>
+				{entry.data.authorSocial && (
 					entry.data.authorSocial.startsWith('http') ? 
-					<a href={entry.data.authorSocial} target="_blank" rel="noopener noreferrer" class="text-ee-terracotta hover:underline ml-1">Ver perfil</a> :
-					<span class="text-ee-terracotta ml-1">{entry.data.authorSocial}</span>
-				)}</span>
+					<a href={entry.data.authorSocial} target="_blank" rel="noopener noreferrer" class="text-ee-terracotta hover:underline block mt-1">Ver perfil</a> :
+					<span class="text-ee-terracotta block mt-1">{entry.data.authorSocial}</span>
+				)}
 				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
 			</div>
 		</header>

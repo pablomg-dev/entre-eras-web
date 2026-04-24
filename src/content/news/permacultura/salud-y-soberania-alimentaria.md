@@ -2,11 +2,11 @@
 title: "Salud y Soberanía Alimentaria"
 description: "Un espacio dedicado a recuperar el vínculo con la tierra a través de la agroecología"
 pubDate: 2026-03-29
-category: "HUERTO ACTIVO"
-image: "/articulo-1/huerto-1.jpeg"
+category: "Permacultura"
+tags: ["Permacultura", "Huerto Activo"]
+image: "https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=800&q=80"
 isFeatured: false
 author: "María Valeria Novello"
-authorImage: "/articulo-1/madrehierbas.jpg"
 authorSocial: "https://instagram.com/madrehierbas"
 ---
 
