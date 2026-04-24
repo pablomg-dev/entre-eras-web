@@ -4,7 +4,7 @@ description: "Un espacio dedicado a recuperar el vínculo con la tierra a travé
 pubDate: 2026-03-29
 category: "HUERTO ACTIVO"
 image: "/articulo-1/huerto-1.jpeg"
-isFeatured: true
+isFeatured: false
 author: "María Valeria Novello"
 authorImage: "/articulo-1/madrehierbas.jpg"
 authorSocial: "https://instagram.com/madrehierbas"
