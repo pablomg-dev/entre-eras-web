@@ -11,8 +11,8 @@ const recentNews = allNews.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
 const mainFeatured = recentNews[0];
-const sidebarNews = recentNews.slice(1, 5);
-const secondaryNews = recentNews.slice(5, 8);
+const sidebarNews = recentNews.slice(1, 6);
+const secondaryNews = recentNews.slice(6, 9);
 ---
 
 <Layout title="EE - Estilo Editorial | El Periódico Holístico Moderno">
