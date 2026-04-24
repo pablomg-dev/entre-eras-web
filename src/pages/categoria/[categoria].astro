@@ -1,0 +1,89 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const categorySlugs = [
+    'voces', 'comunidad', 'educacion', 'economia', 
+    'bioconstruccion', 'huerto-activo', 'alimentacion', 'medicina-natural',
+    'nuevos-vinculos', 'tiempo-natural', 'astrologia-hoy', 'recursos-terapeuticos',
+    'gestacion', 'cultura', 'sociedad', 'permacultura', 'salud-integral', 'camino-interior'
+  ];
+  
+  return categorySlugs.map(slug => ({
+    params: { categoria: slug },
+  }));
+}
+
+const { categoria } = Astro.params;
+
+const categoryMap: Record<string, string> = {
+  'voces': 'Voces',
+  'comunidad': 'Comunidad',
+  'educacion': 'Educación',
+  'economia': 'Economía',
+  'bioconstruccion': 'Bioconstrucción',
+  'huerto-activo': 'Huerto Activo',
+  'alimentacion': 'Alimentación Consciente',
+  'medicina-natural': 'Medicina Natural',
+  'nuevos-vinculos': 'Nuevos Vínculos',
+  'tiempo-natural': 'Tiempo Natural',
+  'astrologia-hoy': 'Astrología Hoy',
+  'recursos-terapeuticos': 'Recursos Terapéuticos',
+  'gestacion': 'Gestación y Crianza',
+  'cultura': 'Cultura Viva',
+  'sociedad': 'Sociedad en Transición',
+  'permacultura': 'Permacultura',
+  'salud-integral': 'Salud Integral',
+  'camino-interior': 'Camino Interior',
+};
+
+const displayTitle = categoryMap[categoria] || categoria;
+
+const allNews = await getCollection("news");
+const filteredNews = allNews.filter(entry => {
+  const cat = entry.data.category.toLowerCase();
+  const tags = entry.data.tags?.map(t => t.toLowerCase()) || [];
+  const target = categoria.toLowerCase();
+  const mappedTarget = categoryMap[target]?.toLowerCase();
+  
+  return cat === target || tags.includes(target) || (mappedTarget && cat === mappedTarget);
+}).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<Layout title={`${displayTitle} | EE Estilo Editorial`}>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <header class="mb-12 border-b border-ee-brown-dark/10 pb-8">
+      <h1 class="font-dm-serif-display text-4xl text-ee-brown-dark uppercase tracking-wider mb-4">
+        {displayTitle}
+      </h1>
+      <p class="font-dm-serif text-ee-gray-dark/60 italic">
+        Explorando contenidos de {displayTitle.toLowerCase()} en Entre Eras.
+      </p>
+    </header>
+
+    {filteredNews.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {filteredNews.map((news) => (
+          <ArticleCard
+            article={{
+              ...news.data,
+              slug: news.slug,
+            }}
+            size="medium"
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-24 bg-ee-sand/10 border border-dashed border-ee-brown-dark/20 rounded-lg">
+        <p class="font-dm-serif text-xl text-ee-brown-dark/50">
+          Aún no hay notas en esta categoría.
+        </p>
+        <a href="/" class="inline-block mt-6 text-ee-terracotta hover:underline font-poppins text-sm uppercase tracking-widest">
+          Volver al inicio
+        </a>
+      </div>
+    )}
+  </main>
+</Layout>

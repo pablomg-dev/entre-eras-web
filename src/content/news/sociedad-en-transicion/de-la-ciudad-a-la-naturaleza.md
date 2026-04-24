@@ -7,6 +7,7 @@ image: "/ciudad-a-naturaleza/ciudad-a-naturaleza.jpg"
 isFeatured: true
 author: "MARÍA CECILIA FERNANDEZ"
 authorSocial: "@CECIFER.OK"
+tags: ["Voces"]
 ---
 
 La humanidad está vivenciando muchos cambios. Cambios que invitan a generar movimientos, tanto internos como externos. Ya nada es como lo conocíamos. La Tierra está elevando su frecuencia y el mundo está en crisis. Pero ya sabemos: crisis = oportunidad.

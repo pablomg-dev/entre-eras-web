@@ -10,51 +10,13 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const { Content } = await entry.render();
 
 const allNews = await getCollection('news');
 const previousNews = allNews
   .filter(n => n.data.category === entry.data.category && n.data.pubDate.getTime() < entry.data.pubDate.getTime())
   .sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime())
   .slice(0, 3);
-
-function extractFirstParagraph(body: string): string {
-  const lines = body.split('\n');
-  let inFrontmatter = false;
-  let foundFirstParagraph = false;
-  let paragraph = '';
-
-  for (const line of lines) {
-    const trimmed = line.trim();
-
-    if (trimmed === '---') {
-      if (!inFrontmatter) {
-        inFrontmatter = true;
-      } else {
-        inFrontmatter = false;
-      }
-      continue;
-    }
-
-    if (inFrontmatter) continue;
-    if (trimmed === '') {
-      if (foundFirstParagraph) break;
-      continue;
-    }
-    if (trimmed.startsWith('#') || trimmed.startsWith('![') || trimmed.startsWith('-') || trimmed.startsWith('*') || trimmed.startsWith('>')) continue;
-
-    if (!foundFirstParagraph) {
-      paragraph = trimmed;
-      foundFirstParagraph = true;
-    } else {
-      if (trimmed === '') break;
-      paragraph += ' ' + trimmed;
-    }
-  }
-
-  return paragraph;
-}
-
-const firstParagraph = extractFirstParagraph(entry.body);
 ---
 
 <Layout title={`${entry.data.title} | EE Estilo Editorial`}>
@@ -62,9 +24,7 @@ const firstParagraph = extractFirstParagraph(entry.body);
 		<header class="mb-12 text-center border-b pb-12 border-ee-brown-dark/10">
 			<span class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">{entry.data.category}</span>
 			<h1 class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm">{entry.data.title}</h1>
-			<p class="font-dm-serif text-ee-subhead text-ee-cyan-muted italic max-w-2xl mx-auto mb-8 font-light">
-				{entry.data.description}
-			</p>
+
 			<div class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60">
 				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span>{entry.data.authorSocial && (
 					entry.data.authorSocial.startsWith('http') ? 
@@ -80,7 +40,7 @@ const firstParagraph = extractFirstParagraph(entry.body);
 		</div>
 
 		<div class="prose prose-lg prose-stone max-w-none font-poppins text-sm md:text-base leading-[1.8] text-ee-gray-dark">
-			<p>{firstParagraph}</p>
+			<Content />
 		</div>
 
 		<!-- Revista CTA -->
