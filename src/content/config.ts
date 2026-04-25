@@ -7,6 +7,7 @@ const news = defineCollection({
     description: z.string(),
     pubDate: z.date(),
     category: z.string(),
+    subcategory: z.string().optional(),
     image: z.string(),
     isFeatured: z.boolean().default(false),
     author: z.string(),

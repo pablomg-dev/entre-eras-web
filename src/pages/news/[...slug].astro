@@ -22,7 +22,9 @@ const previousNews = allNews
 <Layout title={`${entry.data.title} | EE Estilo Editorial`}>
 	<article class="max-w-4xl mx-auto py-12 px-4 shadow-sm bg-white mt-12 mb-24 border-t-8 border-ee-green-muted">
 		<header class="mb-12 text-center border-b pb-12 border-ee-brown-dark/10">
-			<span class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">{entry.data.category}</span>
+			<span class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">
+				{entry.data.subcategory || (entry.data.tags && entry.data.tags.length > 1 ? entry.data.tags[1] : entry.data.category)}
+			</span>
 			<h1 class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm">{entry.data.title}</h1>
 
 			<div class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60">

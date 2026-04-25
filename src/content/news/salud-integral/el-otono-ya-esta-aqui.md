@@ -3,6 +3,7 @@ title: "El otoño ya está aquí"
 description: "Una mirada integrativa sobre la alimentación que entiende que la nutrición va mucho más allá de lo que comemos."
 pubDate: 2026-04-23
 category: "Salud Integral"
+subcategory: "Alimentación Consciente"
 tags: ["Salud Integral", "Alimentación Consciente"]
 image: "/el-otono-ya-esta-aqui/alimentacion-consciente.jpg"
 author: "VERÓNICA JESÚS"

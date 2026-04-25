@@ -75,7 +75,7 @@ const secondaryNews = recentNews.slice(6, 9);
                 </div>
                 <div class="flex-grow flex flex-col justify-center">
                   <span class="font-dm-serif-display text-[10px] text-ee-terracotta uppercase tracking-[0.15em] mb-1">
-                    {news.data.tags ? news.data.tags[1] || news.data.tags[0] : news.data.category}
+                    {news.data.subcategory || (news.data.tags ? news.data.tags[1] || news.data.tags[0] : news.data.category)}
                   </span>
                   <h3 class="font-playfair text-base text-ee-brown-dark group-hover:text-ee-terracotta transition-colors leading-tight font-medium">
                     {news.data.title}
@@ -100,6 +100,8 @@ const secondaryNews = recentNews.slice(6, 9);
                   slug: news.slug,
                 }}
                 size="medium"
+                showDate={false}
+                showDescription={false}
               />
             </div>
           ))

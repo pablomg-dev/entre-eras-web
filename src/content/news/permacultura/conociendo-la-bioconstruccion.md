@@ -3,6 +3,7 @@ title: "Conociendo la Bioconstrucción"
 description: "Una introducción a las técnicas y beneficios de construir con materiales naturales y respeto por el entorno."
 pubDate: 2026-04-25
 category: "Permacultura"
+subcategory: "Bioconstrucción"
 tags: ["Permacultura", "Bioconstrucción"]
 image: "/bioconstruccion/bioconstruccion.webp"
 author: "MARIAN BARTOLOME"

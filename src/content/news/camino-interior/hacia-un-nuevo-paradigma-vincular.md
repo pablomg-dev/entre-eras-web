@@ -3,7 +3,8 @@ title: "Hacia un nuevo paradigma vincular"
 description: "Explorando los niveles psicológico, transgeneracional y álmico espiritual para transformar nuestra relación con nosotros mismos y los demás."
 pubDate: 2026-04-22
 category: "Camino Interior"
-tags: ["Camino Interior", "Nuevos Vínculos"]
+subcategory: "Relaciones Conscientes"
+tags: ["Camino Interior", "Relaciones Conscientes"]
 image: "/nuevos-vinculos/nuevos-vinculos.jpg"
 author: "AMIR HERNÁNDEZ PUENTE"
 authorSocial: "@AMIR.HERNANDEZ.PUENTE"

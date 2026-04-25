@@ -3,6 +3,7 @@ title: "De la ciudad a la naturaleza"
 description: "La humanidad está vivenciando muchos cambios que invitan a generar movimientos, tanto internos como externos. Ya nada es como lo conocíamos."
 pubDate: 2026-04-26
 category: "Sociedad en Transición"
+subcategory: "Voces"
 image: "/ciudad-a-naturaleza/ciudad-a-naturaleza.jpg"
 isFeatured: true
 author: "MARÍA CECILIA FERNANDEZ"

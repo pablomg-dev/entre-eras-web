@@ -3,6 +3,7 @@ title: "El arte de acompañar la vida"
 description: "La importancia de la Doula en el acompañamiento de la gestación, brindando calma y seguridad en un proceso único."
 pubDate: 2026-04-21
 category: "Gestación y Crianza"
+subcategory: "Gestación y Crianza"
 tags: ["Gestación y Crianza"]
 image: "/arte-acompanar-vida/arte-acompanar-vida.jpg"
 author: "MARÍA LUJÁN SCAIOLI"
