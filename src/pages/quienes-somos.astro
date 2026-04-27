@@ -12,7 +12,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <!-- Texto Principal -->
-    <div class="space-y-10 font-dm-serif text-lg md:text-xl text-ee-gray-dark leading-relaxed italic text-center md:text-left">
+    <div class="space-y-10 font-dm-serif text-base md:text-lg text-ee-gray-dark leading-relaxed italic text-center md:text-left">
       <p>
         Mi nombre es María Cecilia y soy quien impulsa este proyecto editorial, como el inicio de un camino para recorrer distintas miradas dentro de la sociedad.
       </p>
@@ -32,25 +32,25 @@ import Layout from "../layouts/Layout.astro";
 
     <!-- Firma e Imagen Final -->
     <div class="mt-24 border-t border-ee-brown-dark/10 pt-16">
-      <div class="flex flex-col md:flex-row justify-between items-end gap-12">
-        <!-- Lado Izquierdo: Imagen, Nombre y Cargo -->
-        <div class="flex flex-col items-start">
-          <div class="w-48 h-56 md:w-56 md:h-64 overflow-hidden rounded-sm shadow-xl mb-6 border border-ee-brown-dark/5">
+      <div class="flex flex-col gap-16">
+        <!-- Imagen, Nombre y Cargo -->
+        <div class="flex flex-row items-center gap-8">
+          <div class="w-40 h-40 md:w-48 md:h-48 shrink-0 overflow-hidden rounded-full shadow-xl border border-ee-brown-dark/10">
             <img 
               src="/quienes-somos.jpeg" 
               alt="María Cecilia Fernández" 
               class="w-full h-full object-cover" 
             />
           </div>
-          <div class="pl-2">
+          <div>
             <p class="font-dm-serif-display text-2xl text-ee-brown-dark mb-1">María Cecilia Fernández</p>
             <p class="font-sans-body text-[10px] text-ee-terracotta uppercase tracking-[0.2em] font-semibold">Directora General</p>
           </div>
         </div>
 
-        <!-- Lado Derecho: Agradecimiento -->
-        <div class="pb-4 md:pb-10 md:pr-8">
-          <p class="font-dm-serif text-2xl md:text-3xl italic text-ee-gray-dark text-right">
+        <!-- Agradecimiento centrado abajo -->
+        <div class="w-full text-center">
+          <p class="font-dm-serif text-xl md:text-2xl italic text-ee-gray-dark">
             “Gracias por ser parte.”
           </p>
         </div>

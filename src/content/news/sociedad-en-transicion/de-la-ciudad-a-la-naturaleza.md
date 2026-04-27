@@ -1,6 +1,6 @@
 ---
 title: "De la ciudad a la naturaleza"
-description: "La humanidad está vivenciando muchos cambios que invitan a generar movimientos, tanto internos como externos. Ya nada es como lo conocíamos."
+description: "La humanidad está vivenciando muchos cambios. Cambios que invitan a generar movimientos, tanto internos como externos."
 pubDate: 2026-04-26
 category: "Sociedad en Transición"
 subcategory: "Voces"

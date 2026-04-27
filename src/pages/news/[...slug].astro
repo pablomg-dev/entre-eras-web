@@ -1,126 +1,193 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const newsEntries = await getCollection('news');
-  return newsEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const newsEntries = await getCollection("news");
+  return newsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const allNews = await getCollection('news');
+const allNews = await getCollection("news");
 const previousNews = allNews
-  .filter(n => n.data.category === entry.data.category && n.data.pubDate.getTime() < entry.data.pubDate.getTime())
+  .filter(
+    (n) =>
+      n.data.category === entry.data.category &&
+      n.data.pubDate.getTime() < entry.data.pubDate.getTime(),
+  )
   .sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime())
   .slice(0, 3);
 ---
 
 <Layout title={`${entry.data.title} | EE Estilo Editorial`}>
-	<article class="max-w-4xl mx-auto py-12 px-4 shadow-sm bg-white mt-12 mb-24 border-t-8 border-ee-green-muted">
-		<header class="mb-12 text-center border-b pb-12 border-ee-brown-dark/10">
-			<span class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block">
-				{entry.data.subcategory || (entry.data.tags && entry.data.tags.length > 1 ? entry.data.tags[1] : entry.data.category)}
-			</span>
-			<h1 class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm">{entry.data.title}</h1>
+  <article
+    class="max-w-4xl mx-auto py-12 px-4 shadow-sm bg-white mt-12 mb-24 border-t-8 border-ee-green-muted"
+  >
+    <header class="mb-12 text-center border-b pb-12 border-ee-brown-dark/10">
+      <span
+        class="font-dm-serif-display text-ee-terracotta uppercase tracking-[0.3em] mb-4 block"
+      >
+        {
+          entry.data.subcategory ||
+            (entry.data.tags && entry.data.tags.length > 1
+              ? entry.data.tags[1]
+              : entry.data.category)
+        }
+      </span>
+      <h1
+        class="font-playfair text-5xl md:text-6xl text-ee-brown-dark leading-tight mb-8 drop-shadow-sm"
+      >
+        {entry.data.title}
+      </h1>
 
-			<div class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60">
-				<span>Por <span class="text-ee-brown-dark font-bold">{entry.data.author}</span></span>
-				{entry.data.authorSocial && (
-					entry.data.authorSocial.startsWith('http') ? 
-					<a href={entry.data.authorSocial} target="_blank" rel="noopener noreferrer" class="text-ee-terracotta hover:underline block mt-1">Ver perfil</a> :
-					<span class="text-ee-terracotta block mt-1">{entry.data.authorSocial}</span>
-				)}
-				<time>{entry.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
-			</div>
-		</header>
+      <div
+        class="flex flex-col items-center gap-2 font-poppins text-xs uppercase tracking-widest opacity-60"
+      >
+        <span
+          >Por <span class="text-ee-brown-dark font-bold"
+            >{entry.data.author}</span
+          ></span
+        >
+        {
+          entry.data.authorSocial &&
+            (entry.data.authorSocial.startsWith("http") ? (
+              <a
+                href={entry.data.authorSocial}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-ee-terracotta hover:underline block mt-1"
+              >
+                Ver perfil
+              </a>
+            ) : (
+              <span class="text-ee-terracotta block mt-1">
+                {entry.data.authorSocial}
+              </span>
+            ))
+        }
+        <time
+          >{
+            entry.data.pubDate.toLocaleDateString("es-ES", {
+              month: "long",
+              year: "numeric",
+            })
+          }</time
+        >
+      </div>
+    </header>
 
-		<div class="mb-8 md:mb-12 w-56 h-56 md:w-80 md:h-80 mx-auto overflow-hidden rounded-full shadow-lg">
-			<img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
-		</div>
+    <div
+      class="mb-8 md:mb-12 w-56 h-56 md:w-80 md:h-80 mx-auto overflow-hidden rounded-full shadow-lg"
+    >
+      <img
+        src={entry.data.image}
+        alt={entry.data.title}
+        class="w-full h-full object-cover"
+      />
+    </div>
 
-		<div class="prose prose-lg prose-stone max-w-none font-poppins text-sm md:text-base leading-[1.8] text-ee-gray-dark">
-			<Content />
-		</div>
+    <div
+      class="prose prose-lg prose-stone max-w-none font-poppins text-sm md:text-base leading-[1.8] text-ee-gray-dark"
+    >
+      <Content />
+    </div>
 
-		<!-- Revista CTA -->
-		<div class="mt-16 p-8 bg-ee-sand/10 border border-ee-sand/30 text-center">
-			<p class="font-dm-serif text-lg text-ee-brown-dark italic mb-4">
-				Si querés leer la nota completa visitá la revista digital
-			</p>
-			<a href="/revista" class="inline-block bg-ee-terracotta text-white px-8 py-3 font-poppins text-sm uppercase tracking-widest hover:bg-ee-brown-dark transition-colors">
-				Ver Revista
-			</a>
-		</div>
+    <!-- Revista CTA -->
+    <div class="mt-16 p-8 bg-ee-sand/10 border border-ee-sand/30 text-center">
+      <p class="font-dm-serif text-lg text-ee-brown-dark italic mb-4">
+        Si querés leer la nota completa visitá la revista digital
+      </p>
+      <a
+        href="/revista"
+        class="inline-block bg-ee-terracotta text-white px-8 py-3 font-poppins text-sm uppercase tracking-widest hover:bg-ee-brown-dark transition-colors"
+      >
+        Ver Revista
+      </a>
+    </div>
 
-		<!-- Notas Anteriores -->
-		{previousNews.length > 0 && (
-			<div class="mt-16 pt-12 border-t border-ee-brown-dark/10">
-				<h3 class="font-dm-serif-display text-xl text-ee-brown-dark mb-8 text-center uppercase tracking-wider">Notas anteriores de {entry.data.category}</h3>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					{previousNews.map(article => (
-						<a href={`/news/${article.slug}`} class="block group">
-							<div class="overflow-hidden aspect-[4/3] mb-3">
-								<img 
-									src={article.data.image} 
-									alt={article.data.title} 
-									class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-								/>
-							</div>
-							<h4 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-terracotta transition-colors">
-								{article.data.title}
-							</h4>
-							<time class="font-poppins text-xs opacity-50 uppercase tracking-widest">
-								{article.data.pubDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}
-							</time>
-						</a>
-					))}
-				</div>
-			</div>
-		)}
+    <!-- Notas Anteriores -->
+    {
+      previousNews.length > 0 && (
+        <div class="mt-16 pt-12 border-t border-ee-brown-dark/10">
+          <h3 class="font-dm-serif-display text-xl text-ee-brown-dark mb-8 text-center uppercase tracking-wider">
+            Notas anteriores de {entry.data.category}
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {previousNews.map((article) => (
+              <a href={`/news/${article.slug}`} class="block group">
+                <div class="overflow-hidden aspect-[4/3] mb-3">
+                  <img
+                    src={article.data.image}
+                    alt={article.data.title}
+                    class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <h4 class="font-playfair text-lg text-ee-brown-dark group-hover:text-ee-terracotta transition-colors">
+                  {article.data.title}
+                </h4>
+                <time class="font-poppins text-xs opacity-50 uppercase tracking-widest">
+                  {article.data.pubDate.toLocaleDateString("es-ES", {
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </time>
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
 
-		<footer class="mt-20 pt-12 border-t-4 border-ee-brown-dark flex flex-col justify-center items-center gap-4 text-center">
-			<a href="/" class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta">← Volver al Inicio</a>
-		</footer>
-	</article>
+    <footer
+      class="mt-20 pt-12 border-t-4 border-ee-brown-dark flex flex-col justify-center items-center gap-4 text-center"
+    >
+      <a
+        href="/"
+        class="font-dm-serif-display text-ee-brown-dark uppercase tracking-widest hover:text-ee-terracotta"
+        >← Volver al Inicio</a
+      >
+    </footer>
+  </article>
 </Layout>
 
 <style is:global>
-	.prose p {
-		margin-bottom: 2rem;
-	}
-	.prose > p:first-of-type::first-letter {
-		float: left;
-		font-family: 'Playfair Display', serif;
-		font-size: 2.5rem !important;
-		line-height: 0.7;
-		padding-right: 0.5rem;
-		padding-top: 0.15rem;
-		color: #c46d5e;
-		font-weight: 700;
-	}
-	@media (min-width: 640px) {
-		.prose > p:first-of-type::first-letter {
-			font-size: 3rem !important;
-		}
-	}
-	@media (min-width: 768px) {
-		.prose > p:first-of-type::first-letter {
-			font-size: 3.5rem !important;
-			padding-top: 0.1rem;
-		}
-	}
-	@media (min-width: 1024px) {
-		.prose > p:first-of-type::first-letter {
-			font-size: 4.5rem !important;
-		}
-	}
-	@media (min-width: 1280px) {
-		.prose > p:first-of-type::first-letter {
-			font-size: 5rem !important;
-		}
-	}
+  .prose p {
+    margin-bottom: 2rem;
+  }
+  .prose > p:first-of-type::first-letter {
+    float: left;
+    font-family: "Playfair Display", serif;
+    font-size: 2.5rem !important;
+    line-height: 0.7;
+    padding-right: 0.5rem;
+    padding-top: 0.15rem;
+    color: #c46d5e;
+    font-weight: 700;
+  }
+  @media (min-width: 640px) {
+    .prose > p:first-of-type::first-letter {
+      font-size: 3rem !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .prose > p:first-of-type::first-letter {
+      font-size: 3.5rem !important;
+      padding-top: 0.1rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .prose > p:first-of-type::first-letter {
+      font-size: 4.5rem !important;
+    }
+  }
+  @media (min-width: 1280px) {
+    .prose > p:first-of-type::first-letter {
+      font-size: 5rem !important;
+    }
+  }
 </style>
