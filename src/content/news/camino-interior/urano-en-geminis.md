@@ -1,7 +1,7 @@
 ---
 title: "Urano en Géminis"
 description: "Este 26 de abril de 2026 marca un umbral simbólico: Urano ingresa definitivamente en Géminis por siete años y con ello se inaugura una nueva forma de comunicar y comunicarnos."
-pubDate: 2026-04-19
+pubDate: 2026-05-19
 category: "Camino Interior"
 subcategory: "Astrología Hoy"
 image: "/urano-geminis.png"

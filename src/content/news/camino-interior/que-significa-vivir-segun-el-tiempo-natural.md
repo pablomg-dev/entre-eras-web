@@ -1,7 +1,7 @@
 ---
 title: "¿Qué significa vivir según el tiempo natural?"
 description: "Existe un concepto de Tiempo Natural que nos introduce conscientemente dentro de los ciclos naturales del mundo en el que vivimos: la noche, las lunas, los solsticios y los equinoccios."
-pubDate: 2026-04-20
+pubDate: 2026-05-20
 category: "Camino Interior"
 subcategory: "Tiempo Natural"
 image: "/tiempo-natural-1.jpg"

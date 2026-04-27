@@ -1,7 +1,7 @@
 ---
 title: "Hacia un nuevo paradigma vincular"
 description: "Explorando los niveles psicológico, transgeneracional y álmico espiritual para transformar nuestra relación con nosotros mismos y los demás."
-pubDate: 2026-04-22
+pubDate: 2026-05-22
 category: "Camino Interior"
 subcategory: "Nuevos Vínculos"
 tags: ["Camino Interior", "Nuevos Vínculos"]

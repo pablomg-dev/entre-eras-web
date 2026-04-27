@@ -1,7 +1,7 @@
 ---
 title: "Salud y soberanía alimentaria"
 description: "La importancia de cultivar nuestros propios alimentos para asegurar una nutrición libre de agrotóxicos."
-pubDate: 2026-04-24
+pubDate: 2026-05-24
 category: "Permacultura"
 subcategory: "Huerto Activo"
 tags: ["Permacultura", "Huerto Activo"]

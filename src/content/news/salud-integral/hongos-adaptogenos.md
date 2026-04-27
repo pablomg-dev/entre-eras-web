@@ -1,7 +1,7 @@
 ---
 title: "Hongos Adaptógenos"
 description: "En esta edición recibimos a Agustín Gaynor, productor orgánico de Hongos Adaptógenos y creador de SERFUNGICO, para conocer un poco más sobre esta opción natural que surge con fuerza en Argentina."
-pubDate: 2026-04-18
+pubDate: 2026-05-18
 category: "Salud Integral"
 subcategory: "Medicina Natural"
 image: "/hongos-adaptogenos.jpeg"
