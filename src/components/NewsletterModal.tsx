@@ -111,6 +111,7 @@ const NewsletterModal: React.FC = () => {
                   required
                   value={formData.nombre}
                   onChange={handleChange}
+                  autoComplete="given-name"
                   className="w-full border border-gray-200 px-4 py-3 text-sm font-poppins focus:outline-none focus:border-ee-terracotta transition-colors"
                 />
               </div>
@@ -122,6 +123,7 @@ const NewsletterModal: React.FC = () => {
                   required
                   value={formData.apellidos}
                   onChange={handleChange}
+                  autoComplete="family-name"
                   className="w-full border border-gray-200 px-4 py-3 text-sm font-poppins focus:outline-none focus:border-ee-terracotta transition-colors"
                 />
               </div>
@@ -133,6 +135,7 @@ const NewsletterModal: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  autoComplete="email"
                   className="w-full border border-gray-200 px-4 py-3 text-sm font-poppins focus:outline-none focus:border-ee-terracotta transition-colors"
                 />
               </div>

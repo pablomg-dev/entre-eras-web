@@ -1,4 +1,6 @@
 ---
+import { getCollection } from "astro:content";
+
 interface Props {
   title: string;
   description?: string;
@@ -8,6 +10,11 @@ const {
   title,
   description = "EE - Estilo Editorial | Revista Digital y Periódico Holístico",
 } = Astro.props;
+
+const allNews = await getCollection("news");
+const popularNews = allNews
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
 <!doctype html>
@@ -41,6 +48,7 @@ const {
             id="search-input"
             type="text"
             placeholder="buscar"
+            autocomplete="off"
             class="w-full bg-white/10 border border-white/20 px-3 py-1 font-poppins text-[10px] md:text-xs italic text-white placeholder:text-white/60 focus:outline-none focus:bg-white/20 transition-all rounded-sm"
           />
           <button
@@ -432,6 +440,7 @@ const {
                   id="mobile-search-input"
                   type="text"
                   placeholder="buscar"
+                  autocomplete="off"
                   class="w-full bg-ee-sand/10 border border-ee-brown-dark/5 px-4 py-3 font-poppins text-sm italic focus:outline-none focus:border-ee-terracotta/30 transition-colors rounded-sm"
                 />
                 <button
@@ -644,21 +653,15 @@ const {
               Lo más visto
             </h3>
             <ul class="space-y-3 font-poppins text-ee-body">
-              <li>
-                <a href="#" class="hover:text-ee-terracotta"
-                  >Meditación urbana</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-ee-terracotta"
-                  >Cocina estacional</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-ee-terracotta"
-                  >Entrevistas: Elena Estrada</a
-                >
-              </li>
+              {
+                popularNews.map((news) => (
+                  <li>
+                    <a href={`/news/${news.slug}`} class="hover:text-ee-terracotta">
+                      {news.data.title}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div>

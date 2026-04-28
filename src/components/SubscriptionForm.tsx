@@ -43,6 +43,7 @@ const SubscriptionForm: React.FC = () => {
                             required
                             value={formData.nombre}
                             onChange={handleChange}
+                            autoComplete="given-name"
                             className="bg-white border-2 border-ee-brown-dark/10 px-4 md:px-6 py-3 md:py-4 font-poppins text-sm md:text-base tracking-wider focus:outline-none focus:border-ee-terracotta transition-colors shadow-inner"
                         />
                         <input 
@@ -53,6 +54,7 @@ const SubscriptionForm: React.FC = () => {
                             required
                             value={formData.apellido}
                             onChange={handleChange}
+                            autoComplete="family-name"
                             className="bg-white border-2 border-ee-brown-dark/10 px-4 md:px-6 py-3 md:py-4 font-poppins text-sm md:text-base tracking-wider focus:outline-none focus:border-ee-terracotta transition-colors shadow-inner"
                         />
                         <input 
@@ -63,6 +65,7 @@ const SubscriptionForm: React.FC = () => {
                             required
                             value={formData.email}
                             onChange={handleChange}
+                            autoComplete="email"
                             className="bg-white border-2 border-ee-brown-dark/10 px-4 md:px-6 py-3 md:py-4 font-poppins text-sm md:text-base tracking-wider focus:outline-none focus:border-ee-terracotta transition-colors shadow-inner"
                         />
                     </div>

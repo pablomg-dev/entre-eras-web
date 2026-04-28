@@ -25,9 +25,9 @@ const secondaryNews = recentNews.slice(6, 9);
     netlify-honeypot="bot-field"
     hidden
   >
-    <input type="text" name="nombre" />
-    <input type="text" name="apellidos" />
-    <input type="email" name="email" />
+    <input type="text" name="nombre" autocomplete="given-name" />
+    <input type="text" name="apellidos" autocomplete="family-name" />
+    <input type="email" name="email" autocomplete="email" />
     <input type="checkbox" name="terms" />
     <textarea name="bot-field"></textarea>
   </form>
@@ -355,28 +355,6 @@ const secondaryNews = recentNews.slice(6, 9);
                 Contáctanos
               </a>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bloque doble imagen: Búscanos y Súmate -->
-    <section class="py-12 -mx-4 sm:-mx-6 lg:-mx-8 bg-ee-sand/5">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative flex flex-col md:flex-row gap-0 overflow-hidden shadow-2xl rounded-sm border border-ee-brown-dark/5">
-          <div class="w-full md:w-1/2 h-72 md:h-96 group overflow-hidden">
-            <img
-              src="/buscanos.jpeg"
-              alt="Búscanos"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-          <div class="w-full md:w-1/2 h-72 md:h-96 group overflow-hidden">
-            <img
-              src="/sumate.jpeg"
-              alt="Súmate"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
           </div>
         </div>
       </div>
