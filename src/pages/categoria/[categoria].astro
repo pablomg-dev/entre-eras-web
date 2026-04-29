@@ -42,13 +42,21 @@ const categoryMap: Record<string, string> = {
 const displayTitle = categoryMap[categoria] || categoria;
 
 const allNews = await getCollection("news");
+
+const normalize = (str: string) => 
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
 const filteredNews = allNews.filter(entry => {
-  const cat = entry.data.category.toLowerCase();
-  const tags = entry.data.tags?.map(t => t.toLowerCase()) || [];
-  const target = categoria.toLowerCase();
-  const mappedTarget = categoryMap[target]?.toLowerCase();
+  const cat = normalize(entry.data.category);
+  const subcat = entry.data.subcategory ? normalize(entry.data.subcategory) : '';
+  const tags = entry.data.tags?.map(t => normalize(t)) || [];
+  const target = normalize(categoria);
+  const mappedTarget = categoryMap[categoria] ? normalize(categoryMap[categoria]) : '';
   
-  return cat === target || tags.includes(target) || (mappedTarget && cat === mappedTarget);
+  return cat === target || 
+         subcat === target || 
+         tags.includes(target) || 
+         (mappedTarget && (cat === mappedTarget || subcat === mappedTarget));
 }).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
