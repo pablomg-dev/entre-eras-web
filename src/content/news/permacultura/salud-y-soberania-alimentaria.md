@@ -14,4 +14,4 @@ authorSocial: "@MADREHIERBAS"
 
 Tener acceso a la comida es algo básico para el ser humano. Pero sabemos que estamos transitando tiempos donde es difícil conseguir alimentos saludables, ya que los que suelen comprarse están tratados con agrotóxicos, sustancias químicas que se utilizan en la agricultura para el control de plagas y enfermedades, pero que son altamente perniciosos para nuestra salud. 
 
-De ahí se deriva la importancia de pensar en organizarnos para tener nuestros propios Huertos o algún tipo de Huerta comunitaria.
+De ahí se deriva la importancia de pensar en organizarnos para tener nuestros propios Huertos o algún tipo de Huerta comunitaria.

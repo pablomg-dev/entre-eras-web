@@ -18,7 +18,14 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
   const [scale, setScale] = useState(1.1);
 
   useEffect(() => {
-    setCurrentPage(paginaInicial || 1);
+    // Intentar leer de la URL si no viene por props o para sincronizar
+    const params = new URLSearchParams(window.location.search);
+    const paginaUrl = params.get('pagina');
+    if (paginaUrl) {
+      setCurrentPage(parseInt(paginaUrl));
+    } else if (paginaInicial) {
+      setCurrentPage(paginaInicial);
+    }
   }, [paginaInicial]);
 
   useEffect(() => {

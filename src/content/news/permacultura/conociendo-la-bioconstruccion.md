@@ -12,4 +12,3 @@ authorSocial: "@CABAN_KAN"
 ---
 
 Aquí vamos a ir adentrándonos en el mundo de la bioconstrucción, integrando algunas comprensiones fundamentales que nos permitan entender de qué se trata.
-
