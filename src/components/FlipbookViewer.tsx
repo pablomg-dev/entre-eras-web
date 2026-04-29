@@ -15,7 +15,7 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
   const [currentPage, setCurrentPage] = useState(paginaInicial || 1);
   const [numPages, setNumPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [scale, setScale] = useState(1.5);
+  const [scale, setScale] = useState(1.1);
 
   useEffect(() => {
     const loadPdf = async () => {
@@ -46,7 +46,7 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
 
     try {
       const page = await pdf.getPage(pageNumber);
-      const viewport = page.getViewport({ scale: window.innerWidth < 768 ? scale * 0.6 : scale });
+      const viewport = page.getViewport({ scale: window.innerWidth < 768 ? scale * 0.8 : scale });
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
 
@@ -69,14 +69,12 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
   const nextPage = () => {
     if (currentPage < numPages) {
       setCurrentPage(prev => prev + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(prev => prev - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
