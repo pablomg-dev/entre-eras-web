@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FlipbookViewer from "../../components/FlipbookViewer";
+
+export function getStaticPaths() {
+  return [
+    { params: { edicion: 'mayo-2026' } },
+  ];
+}
+
+const { edicion } = Astro.params;
+const paginaStr = Astro.url.searchParams.get('pagina');
+const paginaInicial = paginaStr ? parseInt(paginaStr) : 1;
+
+// In a real app, you might fetch the URL from a collection or DB
+const pdfUrl = "https://rvfdlievwnzulbbkcvml.supabase.co/storage/v1/object/public/revistas/EE1-mayo-2026.pdf";
+
+const edicionNombre = edicion.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+---
+
+<Layout title={`Revista Digital - ${edicionNombre} | Entre Eras`}>
+  <main class="min-h-screen bg-[#fdfcf8]">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex justify-between items-center mb-8">
+        <a 
+          href="javascript:history.back()" 
+          class="font-dm-serif text-ee-brown-dark hover:text-ee-terracotta flex items-center gap-2 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          Volver a la nota
+        </a>
+        
+        <h1 class="font-dm-serif-display text-2xl md:text-4xl text-ee-brown-dark text-center">
+          Revista Entre Eras <span class="text-ee-terracotta">Edición {edicionNombre}</span>
+        </h1>
+        
+        <div class="w-24 hidden md:block"></div> <!-- Spacer for centering -->
+      </div>
+      
+      <FlipbookViewer client:only="react" pdfUrl={pdfUrl} paginaInicial={paginaInicial} />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    background-image: radial-gradient(#c7a67a20 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+</style>

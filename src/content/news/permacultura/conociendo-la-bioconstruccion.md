@@ -1,4 +1,5 @@
 ---
+paginaRevista: 12
 title: "Conociendo la Bioconstrucción"
 description: "Una introducción a las técnicas y beneficios de construir con materiales naturales y respeto por el entorno."
 pubDate: 2026-05-25

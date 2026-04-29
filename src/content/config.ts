@@ -15,6 +15,7 @@ const news = defineCollection({
     authorSocial: z.string().optional(),
     gallery: z.array(z.string()).optional(),
     tags: z.array(z.string()).optional(),
+    paginaRevista: z.number().optional(),
   }),
 });
 

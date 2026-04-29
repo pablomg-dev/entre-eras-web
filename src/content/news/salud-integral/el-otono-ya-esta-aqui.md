@@ -1,4 +1,5 @@
 ---
+paginaRevista: 26
 title: "El otoño ya está aquí"
 description: "Una mirada integrativa sobre la alimentación que entiende que la nutrición va mucho más allá de lo que comemos."
 pubDate: 2026-05-23

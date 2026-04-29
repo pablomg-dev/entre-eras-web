@@ -1,4 +1,5 @@
 ---
+paginaRevista: 15
 title: "Salud y soberanía alimentaria"
 description: "La importancia de cultivar nuestros propios alimentos para asegurar una nutrición libre de agrotóxicos."
 pubDate: 2026-05-24

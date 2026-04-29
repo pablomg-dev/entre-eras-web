@@ -1,4 +1,5 @@
 ---
+paginaRevista: 21
 title: "Yoga Nidra: El Arte del Descanso Consciente"
 description: "Cómo 20 minutos de meditación guiada pueden equivaler a 4 horas de sueño reparador."
 pubDate: 2026-03-23

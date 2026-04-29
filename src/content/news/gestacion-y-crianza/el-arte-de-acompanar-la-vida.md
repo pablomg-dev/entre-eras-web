@@ -1,4 +1,5 @@
 ---
+paginaRevista: 36
 title: "El arte de acompañar la vida"
 description: "La importancia de la Doula en el acompañamiento de la gestación, brindando calma y seguridad en un proceso único."
 pubDate: 2026-05-21

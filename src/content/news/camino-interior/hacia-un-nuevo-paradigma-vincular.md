@@ -1,4 +1,5 @@
 ---
+paginaRevista: 29
 title: "Hacia un nuevo paradigma vincular"
 description: "Explorando los niveles psicológico, transgeneracional y álmico espiritual para transformar nuestra relación con nosotros mismos y los demás."
 pubDate: 2026-05-22

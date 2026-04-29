@@ -1,4 +1,5 @@
 ---
+paginaRevista: 40
 title: "Arte que Transforma"
 description: "Cómo la expresión creativa se convierte en un puente hacia nuevas sensibilidades y una visión renovada del mundo."
 category: "Cultura Viva"

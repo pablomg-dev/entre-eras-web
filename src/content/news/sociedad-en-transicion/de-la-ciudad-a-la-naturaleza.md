@@ -1,4 +1,5 @@
 ---
+paginaRevista: 7
 title: "De la ciudad a la naturaleza"
 description: "La humanidad está vivenciando muchos cambios. Cambios que invitan a generar movimientos, tanto internos como externos."
 pubDate: 2026-05-26
