@@ -12,6 +12,11 @@ const { edicion } = Astro.params;
 const paginaStr = Astro.url.searchParams.get('pagina');
 const paginaInicial = paginaStr ? parseInt(paginaStr) : 1;
 
+console.log('--- DEBUG REVISTA ---');
+console.log('Edicion:', edicion);
+console.log('Pagina String:', paginaStr);
+console.log('Pagina Inicial:', paginaInicial);
+
 // In a real app, you might fetch the URL from a collection or DB
 const pdfUrl = "https://rvfdlievwnzulbbkcvml.supabase.co/storage/v1/object/public/revistas/EE1-mayo-2026.pdf";
 

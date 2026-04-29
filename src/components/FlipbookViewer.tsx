@@ -18,6 +18,10 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
   const [scale, setScale] = useState(1.1);
 
   useEffect(() => {
+    setCurrentPage(paginaInicial || 1);
+  }, [paginaInicial]);
+
+  useEffect(() => {
     const loadPdf = async () => {
       try {
         setIsLoading(true);
@@ -36,10 +40,10 @@ const FlipbookViewer: React.FC<Props> = ({ pdfUrl, paginaInicial }) => {
   }, [pdfUrl]);
 
   useEffect(() => {
-    if (pdf && currentPage <= numPages) {
+    if (pdf && currentPage > 0) {
       renderPage(currentPage);
     }
-  }, [pdf, currentPage, scale]);
+  }, [pdf, currentPage, scale, numPages]);
 
   const renderPage = async (pageNumber: number) => {
     if (!pdf || !canvasRef.current) return;
